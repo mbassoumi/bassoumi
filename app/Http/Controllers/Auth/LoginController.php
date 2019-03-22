@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Bassoumi\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Bassoumi\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
