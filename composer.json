@@ -36,7 +36,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Bassoumi\\": "app/"
+            "Bassoumi\\": "app/",
+            "BassoumiPlugins\\": "plugins/"
         },
         "classmap": [
             "database/seeds",

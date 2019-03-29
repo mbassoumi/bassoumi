@@ -8,7 +8,7 @@
 
 @section('content')
     <p>datatable</p>
-    <table id="example" class="display">
+    <table id="example" class="display nowrap" style="width:100%">
         <thead>
         <tr>
             <th>ID</th>
@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <th>
-                <input type="text" class="column_search" placeholder="Search ID"/>
+                <input name="id_search" type="text" class="column_search" placeholder="Search ID"/>
             </th>
             <th>
                 <input type="text" class="column_search" placeholder="Search Name"/>
@@ -37,7 +37,7 @@
             </th>
             <th>
                 {{--<input type="text" class="column_search" placeholder="Created At"/>--}}
-                <input type="text" class="column_search" id="created_at" name="daterange" value="weew" />
+                <input type="text" class="column_search" id="created_at" name="daterange" value="" />
             </th>
             <th>
                 <input type="text" class="column_search" placeholder="Updated At"/>
@@ -58,48 +58,24 @@
 
 @section('js')
     <script>
-
-        $.fn.dataTable.ext.search.push(
-            function( settings, data, dataIndex ){
-                // var min = parseInt( $('#min').val(), 10 );
-                // var max = parseInt( $('#max').val(), 10 );
-                var start = $('#created_at').val();
-                var end = $('#created_at').val();
-                console.log(start);
-                // var end = $('#min').val();
-                var date = parseFloat( data['created_at'] ) || 0; // use data for the age column
-
-
-                console.log(start, end, date);
-                console.log(data);
-                if ( ( isNaN( start ) && isNaN( end ) ) ||
-                    ( start <= data   && data <= end ) )
-                {
-                    return true;
-                }
-                return false;
-            }
-        );
-
         $(document).ready(function () {
 
-            var start = $('#created_at').val();
 
-            console.log(start);
 
             var table = $('#example').DataTable({
                 serverSide: true,
                 processing: true,
                 orderCellsTop: true,
-                deferRender: true,
+                // deferRender: true,
                 scrollX: true,
+
 
                 ajax: {
                     url: 'majd',
                     dataSrc: 'data'
                 },
                 columns: [
-                    {data: 'id'},
+                    {data: 'id', name: 'id'},
                     {data: 'name'},
                     {data: 'has_car'},
                     {data: 'email'},

@@ -179,6 +179,9 @@ return [
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
 
+
+        \BassoumiPlugins\PluginTemplate\providers\PluginTemplateServiceProvider::class
+
     ],
 
     /*
