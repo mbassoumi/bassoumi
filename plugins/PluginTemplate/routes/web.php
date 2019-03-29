@@ -11,3 +11,11 @@
 |
 */
 
+
+
+Route::get('majd2', function (){
+    $a = config('plugin_template.a7a');
+    dd($a);
+});
+
+Route::get('fuck', 'PluginTemplatesController@fuck');

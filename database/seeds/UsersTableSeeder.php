@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,6 +20,6 @@ class UsersTableSeeder extends Seeder
             'remember_token' => \Illuminate\Support\Str::random(10),
         ]);
 
-        factory(\Bassoumi\User::class, 1234)->create();
+        factory(User::class, 1234)->create();
     }
 }

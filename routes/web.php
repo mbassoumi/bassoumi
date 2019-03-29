@@ -25,13 +25,7 @@ Route::get('/datatable', 'HomeController@datatable')->name('datatable');
 
 Route::get('majd', function (\Illuminate\Http\Request $request){
 
-//    dd($request->all());
     $attributes = $request->all();
-//    dd($attributes);
-
-//    $query = \Bassoumi\User::query()->paginate($perPage);
-//    dd($query->perPage());
-
     $page = 1;
     $length = $request->get('length', 10);
     $draw = $request->get('draw', 1);
@@ -44,8 +38,8 @@ Route::get('majd', function (\Illuminate\Http\Request $request){
         $page = intval($start/$length) + 1;
     }
 
-    $query = \Bassoumi\User::query()->paginate($length, '*', "page", $page);
-    $data = \Bassoumi\Http\Resources\UserResource::collection($query);
+    $query = \App\User::query()->paginate($length, '*', "page", $page);
+    $data = \App\Http\Resources\UserResource::collection($query);
     $total = $query->total();
     $additionalDataForDatatable = [
         'draw' => $draw,
@@ -54,20 +48,5 @@ Route::get('majd', function (\Illuminate\Http\Request $request){
     ];
     $data->additional($additionalDataForDatatable);
     return $data;
-    $total = $data->total();
-    $data = $data->toArray($request);
-    $datatableResponse['data'] = $data;
-
-    $datatableResponse['draw'] = $attributes['draw'];
-    $datatableResponse['recordsTotal'] = $total;
-    $datatableResponse['recordsFiltered'] = $total;
-//    dd($datatableResponse);
-//    dd($datatableResponse['meta']);
-//    $datatableResponse['recordsTotal'] = $datatableResponse['meta']['pagination']['total'];
-//    $datatableResponse['recordsFiltered'] = $datatableResponse['meta']['pagination']['total'];
-    return response()->json($datatableResponse);
-    return \Bassoumi\Http\Resources\UserResource::collection(\Bassoumi\User::query()->paginate($perPage));
-//    return \Bassoumi\Http\Resources\UserResource::collection(\Bassoumi\User::all());
-//    return new \Bassoumi\Http\Resources\UserResource(\Bassoumi\User::all());
 
 });

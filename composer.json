@@ -13,7 +13,9 @@
         "fideloper/proxy": "^4.0",
         "jeroennoten/laravel-adminlte": "^1.25",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "league/fractal": "^0.17.0",
+        "prettus/l5-repository": "^2.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -36,8 +38,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Bassoumi\\": "app/",
-            "BassoumiPlugins\\": "plugins/"
+            "App\\": "app/",
+            "Plugins\\": "plugins/"
         },
         "classmap": [
             "database/seeds",

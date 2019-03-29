@@ -169,18 +169,15 @@ return [
         /*
          * Application Service Providers...
          */
-        Bassoumi\Providers\AppServiceProvider::class,
-        Bassoumi\Providers\AuthServiceProvider::class,
-        // Bassoumi\Providers\BroadcastServiceProvider::class,
-        Bassoumi\Providers\EventServiceProvider::class,
-        Bassoumi\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
-
-
-        \BassoumiPlugins\PluginTemplate\providers\PluginTemplateServiceProvider::class
 
     ],
 

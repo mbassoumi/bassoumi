@@ -1062,7 +1062,7 @@ function encode(val) {
 /**
  * Build a URL by appending params to the end
  *
- * @param {string} url The PluginTemplate of the url (e.g., http://www.google.com)
+ * @param {string} url The base of the url (e.g., http://www.google.com)
  * @param {object} [params] The params to be appended
  * @returns {string} The formatted url
  */
@@ -1127,7 +1127,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 /**
  * Creates a new URL by combining the specified URLs
  *
- * @param {string} baseURL The PluginTemplate URL
+ * @param {string} baseURL The base URL
  * @param {string} relativeURL The relative URL
  * @returns {string} The combined URL
  */
@@ -6529,7 +6529,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 		// Only deal with non-null/undefined values
 		if ( ( options = arguments[ i ] ) != null ) {
 
-			// Extend the PluginTemplate object
+			// Extend the base object
 			for ( name in options ) {
 				src = target[ name ];
 				copy = options[ name ];
@@ -16092,7 +16092,7 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
 		if ( support.createHTMLDocument ) {
 			context = document.implementation.createHTMLDocument( "" );
 
-			// Set the PluginTemplate href for the created document
+			// Set the base href for the created document
 			// so any parsed elements with URLs
 			// are based on the document's URL (gh-2965)
 			base = context.createElement( "base" );
@@ -16850,7 +16850,7 @@ return jQuery;
   /** Used to match unescaped characters in compiled string literals. */
   var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
 
-  /** Used to compose unicode character Classes. */
+  /** Used to compose unicode character classes. */
   var rsAstralRange = '\\ud800-\\udfff',
       rsComboMarksRange = '\\u0300-\\u036f',
       reComboHalfMarksRange = '\\ufe20-\\ufe2f',
@@ -17411,7 +17411,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of methods like `_.findKey` and `_.findLastKey`,
+   * The base implementation of methods like `_.findKey` and `_.findLastKey`,
    * without support for iteratee shorthands, which iterates over `collection`
    * using `eachFunc`.
    *
@@ -17433,7 +17433,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.findIndex` and `_.findLastIndex` without
+   * The base implementation of `_.findIndex` and `_.findLastIndex` without
    * support for iteratee shorthands.
    *
    * @private
@@ -17456,7 +17456,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.indexOf` without `fromIndex` bounds checks.
+   * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
    *
    * @private
    * @param {Array} array The array to inspect.
@@ -17493,7 +17493,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.isNaN` without support for number objects.
+   * The base implementation of `_.isNaN` without support for number objects.
    *
    * @private
    * @param {*} value The value to check.
@@ -17504,7 +17504,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.mean` and `_.meanBy` without support for
+   * The base implementation of `_.mean` and `_.meanBy` without support for
    * iteratee shorthands.
    *
    * @private
@@ -17518,7 +17518,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.property` without support for deep paths.
+   * The base implementation of `_.property` without support for deep paths.
    *
    * @private
    * @param {string} key The key of the property to get.
@@ -17531,7 +17531,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.propertyOf` without support for deep paths.
+   * The base implementation of `_.propertyOf` without support for deep paths.
    *
    * @private
    * @param {Object} object The object to query.
@@ -17544,7 +17544,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.reduce` and `_.reduceRight`, without support
+   * The base implementation of `_.reduce` and `_.reduceRight`, without support
    * for iteratee shorthands, which iterates over `collection` using `eachFunc`.
    *
    * @private
@@ -17566,7 +17566,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.sortBy` which uses `comparer` to define the
+   * The base implementation of `_.sortBy` which uses `comparer` to define the
    * sort order of `array` and replaces criteria objects with their corresponding
    * values.
    *
@@ -17586,7 +17586,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.sum` and `_.sumBy` without support for
+   * The base implementation of `_.sum` and `_.sumBy` without support for
    * iteratee shorthands.
    *
    * @private
@@ -17609,7 +17609,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.times` without support for iteratee shorthands
+   * The base implementation of `_.times` without support for iteratee shorthands
    * or max array length checks.
    *
    * @private
@@ -17628,7 +17628,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.toPairs` and `_.toPairsIn` which creates an array
+   * The base implementation of `_.toPairs` and `_.toPairsIn` which creates an array
    * of key-value pairs for `object` corresponding to the property names of `props`.
    *
    * @private
@@ -17643,7 +17643,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.unary` without support for storing metadata.
+   * The base implementation of `_.unary` without support for storing metadata.
    *
    * @private
    * @param {Function} func The function to cap arguments for.
@@ -17656,7 +17656,7 @@ return jQuery;
   }
 
   /**
-   * The PluginTemplate implementation of `_.values` and `_.valuesIn` which creates an
+   * The base implementation of `_.values` and `_.valuesIn` which creates an
    * array of `object` property values corresponding to the property names
    * of `props`.
    *
@@ -18307,7 +18307,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.create` without support for assigning
+     * The base implementation of `_.create` without support for assigning
      * properties to the created object.
      *
      * @private
@@ -18340,7 +18340,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate constructor for creating `lodash` wrapper objects.
+     * The base constructor for creating `lodash` wrapper objects.
      *
      * @private
      * @param {*} value The value to wrap.
@@ -19162,7 +19162,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.assign` without support for multiple sources
+     * The base implementation of `_.assign` without support for multiple sources
      * or `customizer` functions.
      *
      * @private
@@ -19175,7 +19175,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.assignIn` without support for multiple sources
+     * The base implementation of `_.assignIn` without support for multiple sources
      * or `customizer` functions.
      *
      * @private
@@ -19188,7 +19188,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `assignValue` and `assignMergeValue` without
+     * The base implementation of `assignValue` and `assignMergeValue` without
      * value checks.
      *
      * @private
@@ -19210,7 +19210,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.at` without support for individual paths.
+     * The base implementation of `_.at` without support for individual paths.
      *
      * @private
      * @param {Object} object The object to iterate over.
@@ -19230,7 +19230,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.clamp` which doesn't coerce arguments.
+     * The base implementation of `_.clamp` which doesn't coerce arguments.
      *
      * @private
      * @param {number} number The number to clamp.
@@ -19251,7 +19251,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.clone` and `_.cloneDeep` which tracks
+     * The base implementation of `_.clone` and `_.cloneDeep` which tracks
      * traversed objects.
      *
      * @private
@@ -19349,7 +19349,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.conforms` which doesn't clone `source`.
+     * The base implementation of `_.conforms` which doesn't clone `source`.
      *
      * @private
      * @param {Object} source The object of property predicates to conform to.
@@ -19363,7 +19363,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.conformsTo` which accepts `props` to check.
+     * The base implementation of `_.conformsTo` which accepts `props` to check.
      *
      * @private
      * @param {Object} object The object to inspect.
@@ -19389,7 +19389,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.delay` and `_.defer` which accepts `args`
+     * The base implementation of `_.delay` and `_.defer` which accepts `args`
      * to provide to `func`.
      *
      * @private
@@ -19406,7 +19406,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of methods like `_.difference` without support
+     * The base implementation of methods like `_.difference` without support
      * for excluding multiple arrays or iteratee shorthands.
      *
      * @private
@@ -19462,7 +19462,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.forEach` without support for iteratee shorthands.
+     * The base implementation of `_.forEach` without support for iteratee shorthands.
      *
      * @private
      * @param {Array|Object} collection The collection to iterate over.
@@ -19472,7 +19472,7 @@ return jQuery;
     var baseEach = createBaseEach(baseForOwn);
 
     /**
-     * The PluginTemplate implementation of `_.forEachRight` without support for iteratee shorthands.
+     * The base implementation of `_.forEachRight` without support for iteratee shorthands.
      *
      * @private
      * @param {Array|Object} collection The collection to iterate over.
@@ -19482,7 +19482,7 @@ return jQuery;
     var baseEachRight = createBaseEach(baseForOwnRight, true);
 
     /**
-     * The PluginTemplate implementation of `_.every` without support for iteratee shorthands.
+     * The base implementation of `_.every` without support for iteratee shorthands.
      *
      * @private
      * @param {Array|Object} collection The collection to iterate over.
@@ -19500,7 +19500,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of methods like `_.max` and `_.min` which accepts a
+     * The base implementation of methods like `_.max` and `_.min` which accepts a
      * `comparator` to determine the extremum value.
      *
      * @private
@@ -19529,7 +19529,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.fill` without an iteratee call guard.
+     * The base implementation of `_.fill` without an iteratee call guard.
      *
      * @private
      * @param {Array} array The array to fill.
@@ -19557,7 +19557,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.filter` without support for iteratee shorthands.
+     * The base implementation of `_.filter` without support for iteratee shorthands.
      *
      * @private
      * @param {Array|Object} collection The collection to iterate over.
@@ -19575,7 +19575,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.flatten` with support for restricting flattening.
+     * The base implementation of `_.flatten` with support for restricting flattening.
      *
      * @private
      * @param {Array} array The array to flatten.
@@ -19609,7 +19609,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `baseForOwn` which iterates over `object`
+     * The base implementation of `baseForOwn` which iterates over `object`
      * properties returned by `keysFunc` and invokes `iteratee` for each property.
      * Iteratee functions may exit iteration early by explicitly returning `false`.
      *
@@ -19634,7 +19634,7 @@ return jQuery;
     var baseForRight = createBaseFor(true);
 
     /**
-     * The PluginTemplate implementation of `_.forOwn` without support for iteratee shorthands.
+     * The base implementation of `_.forOwn` without support for iteratee shorthands.
      *
      * @private
      * @param {Object} object The object to iterate over.
@@ -19646,7 +19646,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.forOwnRight` without support for iteratee shorthands.
+     * The base implementation of `_.forOwnRight` without support for iteratee shorthands.
      *
      * @private
      * @param {Object} object The object to iterate over.
@@ -19658,7 +19658,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.functions` which creates an array of
+     * The base implementation of `_.functions` which creates an array of
      * `object` function property names filtered from `props`.
      *
      * @private
@@ -19673,7 +19673,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.get` without support for default values.
+     * The base implementation of `_.get` without support for default values.
      *
      * @private
      * @param {Object} object The object to query.
@@ -19693,7 +19693,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `getAllKeys` and `getAllKeysIn` which uses
+     * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
      * `keysFunc` and `symbolsFunc` to get the enumerable property names and
      * symbols of `object`.
      *
@@ -19709,7 +19709,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `getTag` without fallbacks for buggy environments.
+     * The base implementation of `getTag` without fallbacks for buggy environments.
      *
      * @private
      * @param {*} value The value to query.
@@ -19725,7 +19725,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.gt` which doesn't coerce arguments.
+     * The base implementation of `_.gt` which doesn't coerce arguments.
      *
      * @private
      * @param {*} value The value to compare.
@@ -19738,7 +19738,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.has` without support for deep paths.
+     * The base implementation of `_.has` without support for deep paths.
      *
      * @private
      * @param {Object} [object] The object to query.
@@ -19750,7 +19750,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.hasIn` without support for deep paths.
+     * The base implementation of `_.hasIn` without support for deep paths.
      *
      * @private
      * @param {Object} [object] The object to query.
@@ -19762,7 +19762,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.inRange` which doesn't coerce arguments.
+     * The base implementation of `_.inRange` which doesn't coerce arguments.
      *
      * @private
      * @param {number} number The number to check.
@@ -19775,7 +19775,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of methods like `_.intersection`, without support
+     * The base implementation of methods like `_.intersection`, without support
      * for iteratee shorthands, that accepts an array of arrays to inspect.
      *
      * @private
@@ -19838,7 +19838,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.invert` and `_.invertBy` which inverts
+     * The base implementation of `_.invert` and `_.invertBy` which inverts
      * `object` with values transformed by `iteratee` and set by `setter`.
      *
      * @private
@@ -19856,7 +19856,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.invoke` without support for individual
+     * The base implementation of `_.invoke` without support for individual
      * method arguments.
      *
      * @private
@@ -19873,7 +19873,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isArguments`.
+     * The base implementation of `_.isArguments`.
      *
      * @private
      * @param {*} value The value to check.
@@ -19884,7 +19884,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isArrayBuffer` without Node.js optimizations.
+     * The base implementation of `_.isArrayBuffer` without Node.js optimizations.
      *
      * @private
      * @param {*} value The value to check.
@@ -19895,7 +19895,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isDate` without Node.js optimizations.
+     * The base implementation of `_.isDate` without Node.js optimizations.
      *
      * @private
      * @param {*} value The value to check.
@@ -19906,7 +19906,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isEqual` which supports partial comparisons
+     * The base implementation of `_.isEqual` which supports partial comparisons
      * and tracks traversed objects.
      *
      * @private
@@ -19989,7 +19989,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isMap` without Node.js optimizations.
+     * The base implementation of `_.isMap` without Node.js optimizations.
      *
      * @private
      * @param {*} value The value to check.
@@ -20000,7 +20000,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isMatch` without support for iteratee shorthands.
+     * The base implementation of `_.isMatch` without support for iteratee shorthands.
      *
      * @private
      * @param {Object} object The object to inspect.
@@ -20054,7 +20054,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isNative` without bad shim checks.
+     * The base implementation of `_.isNative` without bad shim checks.
      *
      * @private
      * @param {*} value The value to check.
@@ -20070,7 +20070,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isRegExp` without Node.js optimizations.
+     * The base implementation of `_.isRegExp` without Node.js optimizations.
      *
      * @private
      * @param {*} value The value to check.
@@ -20081,7 +20081,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isSet` without Node.js optimizations.
+     * The base implementation of `_.isSet` without Node.js optimizations.
      *
      * @private
      * @param {*} value The value to check.
@@ -20092,7 +20092,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.isTypedArray` without Node.js optimizations.
+     * The base implementation of `_.isTypedArray` without Node.js optimizations.
      *
      * @private
      * @param {*} value The value to check.
@@ -20104,7 +20104,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.iteratee`.
+     * The base implementation of `_.iteratee`.
      *
      * @private
      * @param {*} [value=_.identity] The value to convert to an iteratee.
@@ -20128,7 +20128,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.keys` which doesn't treat sparse arrays as dense.
+     * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
      *
      * @private
      * @param {Object} object The object to query.
@@ -20148,7 +20148,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+     * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
      *
      * @private
      * @param {Object} object The object to query.
@@ -20170,7 +20170,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.lt` which doesn't coerce arguments.
+     * The base implementation of `_.lt` which doesn't coerce arguments.
      *
      * @private
      * @param {*} value The value to compare.
@@ -20183,7 +20183,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.map` without support for iteratee shorthands.
+     * The base implementation of `_.map` without support for iteratee shorthands.
      *
      * @private
      * @param {Array|Object} collection The collection to iterate over.
@@ -20201,7 +20201,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.matches` which doesn't clone `source`.
+     * The base implementation of `_.matches` which doesn't clone `source`.
      *
      * @private
      * @param {Object} source The object of property values to match.
@@ -20218,7 +20218,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.matchesProperty` which doesn't clone `srcValue`.
+     * The base implementation of `_.matchesProperty` which doesn't clone `srcValue`.
      *
      * @private
      * @param {string} path The path of the property to get.
@@ -20238,7 +20238,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.merge` without support for multiple sources.
+     * The base implementation of `_.merge` without support for multiple sources.
      *
      * @private
      * @param {Object} object The destination object.
@@ -20348,7 +20348,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.nth` which doesn't coerce arguments.
+     * The base implementation of `_.nth` which doesn't coerce arguments.
      *
      * @private
      * @param {Array} array The array to query.
@@ -20365,7 +20365,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.orderBy` without param guards.
+     * The base implementation of `_.orderBy` without param guards.
      *
      * @private
      * @param {Array|Object} collection The collection to iterate over.
@@ -20390,7 +20390,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.pick` without support for individual
+     * The base implementation of `_.pick` without support for individual
      * property identifiers.
      *
      * @private
@@ -20405,7 +20405,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of  `_.pickBy` without support for iteratee shorthands.
+     * The base implementation of  `_.pickBy` without support for iteratee shorthands.
      *
      * @private
      * @param {Object} object The source object.
@@ -20443,7 +20443,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.pullAllBy` without support for iteratee
+     * The base implementation of `_.pullAllBy` without support for iteratee
      * shorthands.
      *
      * @private
@@ -20481,7 +20481,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.pullAt` without support for individual
+     * The base implementation of `_.pullAt` without support for individual
      * indexes or capturing the removed elements.
      *
      * @private
@@ -20508,7 +20508,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.random` without support for returning
+     * The base implementation of `_.random` without support for returning
      * floating-point numbers.
      *
      * @private
@@ -20521,7 +20521,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.range` and `_.rangeRight` which doesn't
+     * The base implementation of `_.range` and `_.rangeRight` which doesn't
      * coerce arguments.
      *
      * @private
@@ -20544,7 +20544,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.repeat` which doesn't coerce arguments.
+     * The base implementation of `_.repeat` which doesn't coerce arguments.
      *
      * @private
      * @param {string} string The string to repeat.
@@ -20572,7 +20572,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.rest` which doesn't validate or coerce arguments.
+     * The base implementation of `_.rest` which doesn't validate or coerce arguments.
      *
      * @private
      * @param {Function} func The function to apply a rest parameter to.
@@ -20584,7 +20584,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.sample`.
+     * The base implementation of `_.sample`.
      *
      * @private
      * @param {Array|Object} collection The collection to sample.
@@ -20595,7 +20595,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.sampleSize` without param guards.
+     * The base implementation of `_.sampleSize` without param guards.
      *
      * @private
      * @param {Array|Object} collection The collection to sample.
@@ -20608,7 +20608,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.set`.
+     * The base implementation of `_.set`.
      *
      * @private
      * @param {Object} object The object to modify.
@@ -20648,7 +20648,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `setData` without support for hot loop shorting.
+     * The base implementation of `setData` without support for hot loop shorting.
      *
      * @private
      * @param {Function} func The function to associate metadata with.
@@ -20661,7 +20661,7 @@ return jQuery;
     };
 
     /**
-     * The PluginTemplate implementation of `setToString` without support for hot loop shorting.
+     * The base implementation of `setToString` without support for hot loop shorting.
      *
      * @private
      * @param {Function} func The function to modify.
@@ -20678,7 +20678,7 @@ return jQuery;
     };
 
     /**
-     * The PluginTemplate implementation of `_.shuffle`.
+     * The base implementation of `_.shuffle`.
      *
      * @private
      * @param {Array|Object} collection The collection to shuffle.
@@ -20689,7 +20689,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.slice` without an iteratee call guard.
+     * The base implementation of `_.slice` without an iteratee call guard.
      *
      * @private
      * @param {Array} array The array to slice.
@@ -20719,7 +20719,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.some` without support for iteratee shorthands.
+     * The base implementation of `_.some` without support for iteratee shorthands.
      *
      * @private
      * @param {Array|Object} collection The collection to iterate over.
@@ -20738,7 +20738,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.sortedIndex` and `_.sortedLastIndex` which
+     * The base implementation of `_.sortedIndex` and `_.sortedLastIndex` which
      * performs a binary search of `array` to determine the index at which `value`
      * should be inserted into `array` in order to maintain its sort order.
      *
@@ -20771,7 +20771,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.sortedIndexBy` and `_.sortedLastIndexBy`
+     * The base implementation of `_.sortedIndexBy` and `_.sortedLastIndexBy`
      * which invokes `iteratee` for `value` and each element of `array` to compute
      * their sort ranking. The iteratee is invoked with one argument; (value).
      *
@@ -20824,7 +20824,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.sortedUniq` and `_.sortedUniqBy` without
+     * The base implementation of `_.sortedUniq` and `_.sortedUniqBy` without
      * support for iteratee shorthands.
      *
      * @private
@@ -20851,7 +20851,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.toNumber` which doesn't ensure correct
+     * The base implementation of `_.toNumber` which doesn't ensure correct
      * conversions of binary, hexadecimal, or octal string values.
      *
      * @private
@@ -20869,7 +20869,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.toString` which doesn't convert nullish
+     * The base implementation of `_.toString` which doesn't convert nullish
      * values to empty strings.
      *
      * @private
@@ -20893,7 +20893,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.uniqBy` without support for iteratee shorthands.
+     * The base implementation of `_.uniqBy` without support for iteratee shorthands.
      *
      * @private
      * @param {Array} array The array to inspect.
@@ -20954,7 +20954,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.unset`.
+     * The base implementation of `_.unset`.
      *
      * @private
      * @param {Object} object The object to modify.
@@ -20968,7 +20968,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `_.update`.
+     * The base implementation of `_.update`.
      *
      * @private
      * @param {Object} object The object to modify.
@@ -20982,7 +20982,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of methods like `_.dropWhile` and `_.takeWhile`
+     * The base implementation of methods like `_.dropWhile` and `_.takeWhile`
      * without support for iteratee shorthands.
      *
      * @private
@@ -21005,7 +21005,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of `wrapperValue` which returns the result of
+     * The base implementation of `wrapperValue` which returns the result of
      * performing a sequence of actions on the unwrapped `value`, where each
      * successive action is supplied the return value of the previous.
      *
@@ -21025,7 +21025,7 @@ return jQuery;
     }
 
     /**
-     * The PluginTemplate implementation of methods like `_.xor`, without support for
+     * The base implementation of methods like `_.xor`, without support for
      * iteratee shorthands, that accepts an array of arrays to inspect.
      *
      * @private
@@ -21056,7 +21056,7 @@ return jQuery;
     }
 
     /**
-     * This PluginTemplate implementation of `_.zipObject` which assigns values using `assignFunc`.
+     * This base implementation of `_.zipObject` which assigns values using `assignFunc`.
      *
      * @private
      * @param {Array} props The property identifiers.
@@ -21518,7 +21518,7 @@ return jQuery;
      * @private
      * @param {Function} eachFunc The function to iterate over a collection.
      * @param {boolean} [fromRight] Specify iterating from right to left.
-     * @returns {Function} Returns the new PluginTemplate function.
+     * @returns {Function} Returns the new base function.
      */
     function createBaseEach(eachFunc, fromRight) {
       return function(collection, iteratee) {
@@ -21542,11 +21542,11 @@ return jQuery;
     }
 
     /**
-     * Creates a PluginTemplate function for methods like `_.forIn` and `_.forOwn`.
+     * Creates a base function for methods like `_.forIn` and `_.forOwn`.
      *
      * @private
      * @param {boolean} [fromRight] Specify iterating from right to left.
-     * @returns {Function} Returns the new PluginTemplate function.
+     * @returns {Function} Returns the new base function.
      */
     function createBaseFor(fromRight) {
       return function(object, iteratee, keysFunc) {
@@ -42012,7 +42012,7 @@ function resolveConstructorOptions (Ctor) {
       Ctor.superOptions = superOptions;
       // check if there are any late-modified/attached options (#4976)
       var modifiedOptions = resolveModifiedOptions(Ctor);
-      // update PluginTemplate extend options
+      // update base extend options
       if (modifiedOptions) {
         extend(Ctor.extendOptions, modifiedOptions);
       }
@@ -42138,7 +42138,7 @@ function initExtend (Vue) {
     Sub.mixin = Super.mixin;
     Sub.use = Super.use;
 
-    // create asset registers, so extended Classes
+    // create asset registers, so extended classes
     // can have their private assets too.
     ASSET_TYPES.forEach(function (type) {
       Sub[type] = Super[type];
@@ -42381,7 +42381,7 @@ function initGlobalAPI (Vue) {
     Vue.options[type + 's'] = Object.create(null);
   });
 
-  // this is used to identify the "PluginTemplate" constructor to extend all plain-object
+  // this is used to identify the "base" constructor to extend all plain-object
   // components with in Weex's multi-instance scenarios.
   Vue.options._base = Vue;
 
@@ -42555,7 +42555,7 @@ var namespaceMap = {
 };
 
 var isHTMLTag = makeMap(
-  'html,body,PluginTemplate,head,link,meta,style,title,' +
+  'html,body,base,head,link,meta,style,title,' +
   'address,article,aside,footer,header,h1,h2,h3,h4,h5,h6,hgroup,nav,section,' +
   'div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,' +
   'a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,rtc,ruby,' +
@@ -43772,7 +43772,7 @@ function updateClass (oldVnode, vnode) {
 
   var cls = genClassForVnode(vnode);
 
-  // handle transition Classes
+  // handle transition classes
   var transitionClass = el._transitionClasses;
   if (isDef(transitionClass)) {
     cls = concat(cls, stringifyClass(transitionClass));
@@ -44167,7 +44167,7 @@ function genAssignmentCode (
 }
 
 /**
- * Parse a v-model expression into a PluginTemplate path and a final key segment.
+ * Parse a v-model expression into a base path and a final key segment.
  * Handles both dot-path and possible square brackets.
  *
  * Possible cases:
@@ -45938,7 +45938,7 @@ var TransitionGroup = {
       // Detect whether an element with the move class applied has
       // CSS transitions. Since the element may be inside an entering
       // transition at this very moment, we make a clone of it and remove
-      // all other transition Classes applied to ensure only the move class
+      // all other transition classes applied to ensure only the move class
       // is applied.
       var clone = el.cloneNode();
       if (el._transitionClasses) {
@@ -46189,7 +46189,7 @@ var he = {
 /*  */
 
 var isUnaryTag = makeMap(
-  'area,PluginTemplate,br,col,embed,frame,hr,img,input,isindex,keygen,' +
+  'area,base,br,col,embed,frame,hr,img,input,isindex,keygen,' +
   'link,meta,param,source,track,wbr'
 );
 
@@ -46202,7 +46202,7 @@ var canBeLeftOpenTag = makeMap(
 // HTML5 tags https://html.spec.whatwg.org/multipage/indices.html#elements-3
 // Phrasing Content https://html.spec.whatwg.org/multipage/dom.html#phrasing-content
 var isNonPhrasingTag = makeMap(
-  'address,article,aside,PluginTemplate,blockquote,body,caption,col,colgroup,dd,' +
+  'address,article,aside,base,blockquote,body,caption,col,colgroup,dd,' +
   'details,dialog,div,dl,dt,fieldset,figcaption,figure,footer,form,' +
   'h1,h2,h3,h4,h5,h6,head,header,hgroup,hr,html,legend,li,menuitem,meta,' +
   'optgroup,option,param,rp,rt,source,style,summary,tbody,td,tfoot,th,thead,' +
@@ -49180,8 +49180,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\bassoumi\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\bassoumi\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/majdbassoumi/Desktop/Projects/Laravel/workspace/bassoumi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/majdbassoumi/Desktop/Projects/Laravel/workspace/bassoumi/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

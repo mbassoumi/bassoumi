@@ -1,8 +1,9 @@
 <?php
 
-namespace Bassoumi\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Plugins\PluginTemplate\Providers\PluginTemplateServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->register(PluginTemplateServiceProvider::class);
     }
 
     /**
