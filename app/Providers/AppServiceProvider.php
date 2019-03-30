@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Plugins\PluginTemplate\Providers\PluginTemplateServiceProvider;
+use Plugins\UserManagement\Providers\UserManagementServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->app->register(PluginTemplateServiceProvider::class);
+//        $this->app->register(PluginTemplateServiceProvider::class);
+        $this->app->register(UserManagementServiceProvider::class);
     }
 
     /**

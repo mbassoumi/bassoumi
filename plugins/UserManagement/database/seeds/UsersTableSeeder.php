@@ -1,5 +1,7 @@
 <?php
 
+namespace Plugins\UserManagement\database\seeds;
+
 use Illuminate\Database\Seeder;
 use App\User;
 
