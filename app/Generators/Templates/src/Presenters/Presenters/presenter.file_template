@@ -1,0 +1,30 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+namespace $NAMESPACE$;
+
+use $TRANSFORMER$;
+use Prettus\Repository\Presenter\FractalPresenter;
+
+/**
+ * Class $CLASS$Presenter.
+ *
+ * @package $NAMESPACE$
+ */
+class $CLASS$Presenter extends FractalPresenter
+{
+    /**
+     * Transformer
+     *
+     * @return \League\Fractal\TransformerAbstract
+     */
+    public function getTransformer()
+    {
+        return new $CLASS$Transformer();
+    }
+}

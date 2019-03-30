@@ -6,11 +6,12 @@
  * Time: 22:06
  */
 
-namespace Plugins\PluginTemplate\Polices;
+namespace Plugins\PluginTemplate\Policies;
 
 
 class PluginTemplatePolicy
 {
+
 
 
     public function before()

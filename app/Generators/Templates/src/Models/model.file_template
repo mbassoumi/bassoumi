@@ -1,0 +1,25 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+namespace $NAMESPACE$;
+
+use App\Model;
+
+/**
+ * Class $CLASS$.
+ *
+ * @package $NAMESPACE$
+ */
+class $CLASS$ extends Model
+{
+
+     protected $table       =       '$TABLE_NAME$';
+     protected $casts       =       [];
+     protected $dates       =       [];
+     protected $fillable    =       [];
+}

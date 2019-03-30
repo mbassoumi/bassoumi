@@ -1,0 +1,102 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+namespace $NAMESPACE$;
+
+
+use App\User;
+use $MODEL_NAMESPACE$;
+
+class $CLASS$Policy
+{
+
+
+    /**
+     * check if user can view the $$CLASS_OBJECT$
+     *
+     * @param User $user
+     * @param $CLASS$ $$CLASS_OBJECT$
+     * @return boolean
+     */
+    public function view(User $user, $CLASS$ $$CLASS_OBJECT$)
+    {
+        return true;
+    }
+
+
+    /**
+     * check if user can edit the $$CLASS_OBJECT$
+     *
+     * @param User $user
+     * @param $CLASS$ $$CLASS_OBJECT$
+     * @return boolean
+     */
+    public function edit(User $user, $CLASS$ $$CLASS_OBJECT$)
+    {
+        return true;
+    }
+
+
+    /**
+     * check if user can update the $$CLASS_OBJECT$
+     *
+     * @param User $user
+     * @param $CLASS$ $$CLASS_OBJECT$
+     * @return boolean
+     */
+    public function update(User $user, $CLASS$ $$CLASS_OBJECT$)
+    {
+        return true;
+    }
+
+
+    /**
+     * check if user can create the $$CLASS_OBJECT$
+     *
+     * @param User $user
+     * @param $CLASS$ $$CLASS_OBJECT$
+     * @return boolean
+     */
+    public function create(User $user, $CLASS$ $$CLASS_OBJECT$)
+    {
+        return true;
+    }
+
+
+    /**
+     * check if user can store the $$CLASS_OBJECT$
+     *
+     * @param User $user
+     * @param $CLASS$ $$CLASS_OBJECT$
+     * @return boolean
+     */
+    public function store(User $user, $CLASS$ $$CLASS_OBJECT$)
+    {
+        return true;
+    }
+
+
+    /**
+     * check if user can delete the $$CLASS_OBJECT$
+     *
+     * @param User $user
+     * @param $CLASS$ $$CLASS_OBJECT$
+     * @return boolean
+     */
+    public function delete(User $user, $CLASS$ $$CLASS_OBJECT$)
+    {
+        return true;
+    }
+
+
+    public function before()
+    {
+
+    }
+
+}

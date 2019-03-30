@@ -1,36 +1,45 @@
 <?php
 
-namespace Plugins\UserManagement\Http\Controllers;
+$NAMESPACE$
 
+use Illuminate\Http\Request;
 
-use App\Http\Controllers\AuthController as Controller;
-use Plugins\UserManagement\Http\Requests\UserCreateRequest;
-use Plugins\UserManagement\Http\Requests\UserUpdateRequest;
+use $APPNAME$Http\Requests;
+use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use Plugins\UserManagement\Repositories\Contracts\UserRepository;
+use $APPNAME$Http\Requests\$CLASS$CreateRequest;
+use $APPNAME$Http\Requests\$CLASS$UpdateRequest;
+$REPOSITORY$
+$VALIDATOR$
 
 /**
- * Class UserController.
+ * Class $CONTROLLER$Controller.
  *
- * @package namespace App\User\Http\Controllers;
+ * @package $NAMESPACE$
  */
-class UserController extends Controller
+class $CONTROLLER$Controller extends Controller
 {
     /**
-     * @var UserRepository
+     * @var $CLASS$Repository
      */
     protected $repository;
 
     /**
-     * UserController constructor.
-     *
-     * @param UserRepository $repository
+     * @var $CLASS$Validator
      */
-    public function __construct(UserRepository $repository)
+    protected $validator;
+
+    /**
+     * $CONTROLLER$Controller constructor.
+     *
+     * @param $CLASS$Repository $repository
+     * @param $CLASS$Validator $validator
+     */
+    public function __construct($CLASS$Repository $repository, $CLASS$Validator $validator)
     {
         $this->repository = $repository;
+        $this->validator  = $validator;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -40,36 +49,38 @@ class UserController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $PluginTemplates = $this->repository->all();
+        $$PLURAL$ = $this->repository->all();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $PluginTemplates,
+                'data' => $$PLURAL$,
             ]);
         }
 
-        return view('PluginTemplates.index', compact('PluginTemplates'));
+        return view('$PLURAL$.index', compact('$PLURAL$'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  UserCreateRequest $request
+     * @param  $CLASS$CreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(UserCreateRequest $request)
+    public function store($CLASS$CreateRequest $request)
     {
         try {
 
+            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-            $PluginTemplate = $this->repository->create($request->all());
+            $$SINGULAR$ = $this->repository->create($request->all());
 
             $response = [
-                'message' => 'User created.',
-                'data'    => $PluginTemplate->toArray(),
+                'message' => '$CLASS$ created.',
+                'data'    => $$SINGULAR$->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -78,7 +89,7 @@ class UserController extends Controller
             }
 
             return redirect()->back()->with('message', $response['message']);
-        } catch (\Exception $e) {
+        } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
                     'error'   => true,
@@ -99,16 +110,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $PluginTemplate = $this->repository->find($id);
+        $$SINGULAR$ = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $PluginTemplate,
+                'data' => $$SINGULAR$,
             ]);
         }
 
-        return view('PluginTemplates.show', compact('PluginTemplate'));
+        return view('$PLURAL$.show', compact('$SINGULAR$'));
     }
 
     /**
@@ -120,31 +131,32 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $PluginTemplate = $this->repository->find($id);
+        $$SINGULAR$ = $this->repository->find($id);
 
-        return view('PluginTemplates.edit', compact('PluginTemplate'));
+        return view('$PLURAL$.edit', compact('$SINGULAR$'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserUpdateRequest $request
+     * @param  $CLASS$UpdateRequest $request
      * @param  string            $id
      *
      * @return Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update($CLASS$UpdateRequest $request, $id)
     {
         try {
 
+            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $PluginTemplate = $this->repository->update($request->all(), $id);
+            $$SINGULAR$ = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'User updated.',
-                'data'    => $PluginTemplate->toArray(),
+                'message' => '$CLASS$ updated.',
+                'data'    => $$SINGULAR$->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -182,11 +194,11 @@ class UserController extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'User deleted.',
+                'message' => '$CLASS$ deleted.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'User deleted.');
+        return redirect()->back()->with('message', '$CLASS$ deleted.');
     }
 }

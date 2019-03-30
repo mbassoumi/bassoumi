@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+namespace $NAMESPACE$;
+
+use Prettus\Repository\Contracts\RepositoryInterface;
+
+/**
+ * Interface $CLASS$Repository.
+ *
+ * @package $NAMESPACE$
+ */
+interface $CLASS$Repository extends RepositoryInterface
+{
+    //
+}

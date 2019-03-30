@@ -17,5 +17,9 @@ class Model extends Eloquent implements Transformable
 {
     use TransformableTrait;
 
+    protected $table;
+    protected $casts;
+    protected $dates;
+    protected $fillable;
 
 }

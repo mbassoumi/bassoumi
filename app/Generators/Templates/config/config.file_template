@@ -1,0 +1,24 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Model Configuration
+    |--------------------------------------------------------------------------
+    |
+    | write here any configuration you want for your model
+    |
+    */
+    '$MODEL$' => [
+        'model' => $MODELPATH$::class,
+        'table' => '$TABLE$'
+    ]
+
+];

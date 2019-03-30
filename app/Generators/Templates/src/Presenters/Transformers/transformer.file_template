@@ -1,0 +1,39 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+namespace $NAMESPACE$;
+
+use League\Fractal\TransformerAbstract;
+use $MODEL_NAMESPACE$;
+
+/**
+ * Class $CLASS$Transformer.
+ *
+ * @package $NAMESPACE$
+ */
+class $CLASS$Transformer extends TransformerAbstract
+{
+    /**
+     * Transform the $CLASS$ entity.
+     *
+     * @param $CLASS$ $$CLASS_OBJECT$
+     *
+     * @return array
+     */
+    public function transform($CLASS$ $$CLASS_OBJECT$)
+    {
+        return [
+            'id'         => (int) $$CLASS_OBJECT$->id,
+
+            /* place your other model properties here */
+
+            'created_at' => $$CLASS_OBJECT$->created_at,
+            'updated_at' => $$CLASS_OBJECT$->updated_at
+        ];
+    }
+}

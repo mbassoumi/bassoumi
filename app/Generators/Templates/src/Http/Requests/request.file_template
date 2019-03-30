@@ -1,0 +1,72 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+namespace $NAMESPACE$;
+
+use App\Http\Requests\BassoumiRequest as FormRequest;
+use $MODEL_NAMESPACE$;
+
+class $CLASS$Request extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        $this->model = $this->route('$ROUTE$');
+
+        if (is_null($this->model)){
+            $this->model = new $CLASS$();
+        }
+
+        if ($this->isCreate() || $this->isStore()) {
+            // Determine if the user is authorized to create an entry,
+            return $this->can('create');
+        }
+
+        if ($this->isEdit() || $this->isUpdate()) {
+            // Determine if the user is authorized to update an entry,
+            return $this->can('update');
+        }
+
+        if ($this->isDelete()) {
+            // Determine if the user is authorized to delete an entry,
+            return $this->can('destroy');
+        }
+
+        // Determine if the user is authorized to view the module.
+        return $this->can('view');
+    }
+
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        $rules = [];
+
+        if ($this->isStore()) {
+            // validation rule for create request.
+        }
+
+        if ($this->isUpdate()) {
+            // Validation rule for update request.
+        }
+
+        if ($this->isStore() || $this->isUpdate()) {
+            // Validation rule for both of update and create request.
+        }
+
+        return $rules;
+    }
+}

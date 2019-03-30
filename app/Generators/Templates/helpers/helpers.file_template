@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+
+/**
+    if (! function_exists('helper')) {
+
+        function helper()
+        {
+
+        }
+    }
+*/

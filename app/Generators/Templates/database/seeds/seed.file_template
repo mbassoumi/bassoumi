@@ -1,0 +1,23 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class $CLASS$.
+ */
+class $CLASS$ extends Seeder
+{
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+	    // write your seeder
+	}
+
+}
