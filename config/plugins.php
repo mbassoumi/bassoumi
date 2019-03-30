@@ -29,11 +29,10 @@ return [
         'eloquent' => 'app/Generators/Templates/src/Repositories/Eloquent/eloquent',
         'class' => 'app/Generators/Templates/src/Classes/class',
         'helper' => 'app/Generators/Templates/helpers/helpers',
-        'migrations' => 'app/Generators/Templates/database/migrations/create',
+        'migrations' => 'app/Generators/Templates/database/migrations/create',      //not used
         'seeds' => 'app/Generators/Templates/database/seeds/seed',                  //not used
         'request' => 'app/Generators/Templates/src/Http/Requests/request',
         'controller' => 'app/Generators/Templates/src/Http/Controllers/controller',
-
 
 
         'lang' => 'app/Generators/Templates/resources/lang',
