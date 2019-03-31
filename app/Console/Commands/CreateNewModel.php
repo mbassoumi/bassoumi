@@ -63,6 +63,11 @@ class CreateNewModel extends Command
     public function handle()
     {
 
+        $this->question('a7aaa');
+        $this->comment('a7aaa');
+        $this->line('a7aaa');
+        $this->info('a7aaa');
+        $this->error('a7aaa');
 
         $this->pluginName = 'DummyUser';
         $this->alias = 'dummy_user';

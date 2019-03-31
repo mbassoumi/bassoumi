@@ -36,7 +36,8 @@ class Generator
     {
         $path = $this->getPath(). "/".$this->fileName.".php";
         if ($this->filesystem->exists($path)) {
-            throw new FileAlreadyExistsException($path);
+            $error_message = "$this->fileName.php is already exist in $path";
+            throw new FileAlreadyExistsException($error_message);
         }
 
         if (!$this->filesystem->isDirectory($dir = dirname($path))) {

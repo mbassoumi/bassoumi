@@ -47,4 +47,9 @@ class PresenterGenerator extends Generator
         $this->replaces['namespace'] = $this->namespace;
         $this->replaces['transformer'] = "Plugins\\$this->pluginName\\Presenters\\Transformers\\".$this->modelName."Transformer";
     }
+
+    public function infoMessage()
+    {
+        return "$this->fileName has been generated successfully";
+    }
 }

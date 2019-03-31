@@ -59,4 +59,9 @@ class ProviderGenerator extends Generator
         $this->replaces['controller_namespace'] = "Plugins\\$this->pluginName\\Http\Controllers";
         $this->replaces['alias'] = $options['alias'];
     }
+
+    public function infoMessage()
+    {
+        return "$this->fileName has been generated successfully";
+    }
 }

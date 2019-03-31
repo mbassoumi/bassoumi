@@ -48,4 +48,9 @@ class PolicyGenerator extends Generator
         $this->replaces['model_namespace'] = $options['model'];
         $this->replaces['class_object'] = $options['class_object'];
     }
+
+    public function infoMessage()
+    {
+        return "$this->fileName has been generated successfully";
+    }
 }

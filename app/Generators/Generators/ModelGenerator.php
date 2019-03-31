@@ -30,7 +30,7 @@ class ModelGenerator extends Generator
         $this->pluginName = $options['pluginName'];
         $this->namespace = "Plugins\\$this->pluginName\\Models";
         $this->modelName = $options['class'];
-        $this->fileName = ucfirst($this->modelName);
+        $this->fileName = $this->modelName;
         $this->setReplaces($options);
     }
 
@@ -46,5 +46,10 @@ class ModelGenerator extends Generator
         $this->replaces['class'] = $options['class'];
         $this->replaces['table_name'] = $options['table_name'];
         $this->replaces['namespace'] = $this->namespace;
+    }
+
+    public function infoMessage()
+    {
+        return "$this->fileName Model has been generated successfully";
     }
 }

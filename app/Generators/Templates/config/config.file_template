@@ -16,9 +16,5 @@ return [
     | write here any configuration you want for your model
     |
     */
-    '$MODEL$' => [
-        'model' => $MODELPATH$::class,
-        'table' => '$TABLE$'
-    ]
 
 ];

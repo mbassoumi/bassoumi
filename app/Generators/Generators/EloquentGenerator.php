@@ -30,7 +30,7 @@ class EloquentGenerator extends Generator
         $this->pluginName = $options['pluginName'];
         $this->namespace = "Plugins\\$this->pluginName\\Repositories\\Eloquent";
         $this->modelName = $options['class'];
-        $this->fileName = ucfirst($this->modelName).'RepositoryEloquent';
+        $this->fileName = $this->modelName.'RepositoryEloquent';
         $this->setReplaces($options);
     }
 
@@ -47,5 +47,10 @@ class EloquentGenerator extends Generator
         $this->replaces['namespace'] = $this->namespace;
         $this->replaces['model_namespace'] = $options['model_namespace'];
         $this->replaces['repository_namespace'] = "Plugins\\$this->pluginName\\Repositories\\Contracts\\".$options['class']."Repository";
+    }
+
+    public function infoMessage()
+    {
+        return "$this->fileName has been generated successfully";
     }
 }

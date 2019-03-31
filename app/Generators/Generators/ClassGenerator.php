@@ -30,7 +30,7 @@ class ClassGenerator extends Generator
         $this->pluginName = $options['pluginName'];
         $this->namespace = "Plugins\\$this->pluginName\\Classes";
         $this->modelName = $options['class'];
-        $this->fileName = ucfirst($this->modelName);
+        $this->fileName = $this->modelName;
         $this->setReplaces($options);
     }
 
@@ -43,7 +43,13 @@ class ClassGenerator extends Generator
     {
         $this->replaces['date'] = Carbon::now()->format('d-m-Y');
         $this->replaces['time'] = Carbon::now()->format('g:i A');
-        $this->replaces['class'] = ucfirst($options['class']);
+        $this->replaces['class'] = $options['class'];
         $this->replaces['namespace'] = $this->namespace;
+    }
+
+
+    public function infoMessage()
+    {
+        return "$this->fileName Class has been generated successfully";
     }
 }

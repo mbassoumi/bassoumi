@@ -42,4 +42,9 @@ class HelperGenerator extends Generator
         $this->replaces['date'] = Carbon::now()->format('d-m-Y');
         $this->replaces['time'] = Carbon::now()->format('g:i A');
     }
+
+    public function infoMessage()
+    {
+        return "$this->fileName file has been generated successfully";
+    }
 }

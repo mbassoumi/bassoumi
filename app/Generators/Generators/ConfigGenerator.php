@@ -27,8 +27,7 @@ class ConfigGenerator extends Generator
     {
         parent::__construct();
         $this->pluginName = $options['pluginName'];
-        $this->modelName = strtolower($options['modelName']);
-        $this->fileName = strtolower($options['modelName']);
+        $this->fileName = $options['pluginAlias'];
         $this->setReplaces($options);
     }
 
@@ -41,8 +40,10 @@ class ConfigGenerator extends Generator
     {
         $this->replaces['date'] = Carbon::now()->format('d-m-Y');
         $this->replaces['time'] = Carbon::now()->format('g:i A');
-        $this->replaces['model'] = $options['modelName'];
-        $this->replaces['table'] = $options['tableName'];
-        $this->replaces['modelPath'] = $options['modelPath'];
+    }
+
+    public function infoMessage()
+    {
+        return "Config has been generated successfully";
     }
 }

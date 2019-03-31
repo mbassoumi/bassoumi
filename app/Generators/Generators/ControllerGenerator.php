@@ -52,4 +52,9 @@ class ControllerGenerator extends Generator
         $this->replaces['plural'] = Str::lower(Str::plural($options['class']));
         $this->replaces['singular'] = Str::lower(Str::singular($options['class']));
     }
+
+    public function infoMessage()
+    {
+        return "$this->fileName has been generated successfully";
+    }
 }

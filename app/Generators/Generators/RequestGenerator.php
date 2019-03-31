@@ -31,7 +31,7 @@ class RequestGenerator extends Generator
         $this->pluginName = $options['pluginName'];
         $this->namespace = "Plugins\\$this->pluginName\\Http\\Requests";
         $this->modelName = $options['class'];
-        $this->fileName = ucfirst($this->modelName).'Request';
+        $this->fileName = $this->modelName.'Request';
         $this->setReplaces($options);
     }
 
@@ -44,9 +44,14 @@ class RequestGenerator extends Generator
     {
         $this->replaces['date'] = Carbon::now()->format('d-m-Y');
         $this->replaces['time'] = Carbon::now()->format('g:i A');
-        $this->replaces['class'] = ucfirst($options['class']);
+        $this->replaces['class'] = $options['class'];
         $this->replaces['namespace'] = $this->namespace;
         $this->replaces['route'] = Str::lower(Str::singular($options['class']));
         $this->replaces['model_namespace'] = $options['model_namespace'];
+    }
+
+    public function infoMessage()
+    {
+        return "$this->fileName has been generated successfully";
     }
 }

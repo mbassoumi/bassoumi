@@ -29,7 +29,7 @@ class ContractGenerator extends Generator
 
         $this->pluginName = $options['pluginName'];
         $this->namespace = "Plugins\\$this->pluginName\\Repositories\\Contracts";
-        $this->modelName = ucfirst($options['class']);
+        $this->modelName = $options['class'];
         $this->fileName = $this->modelName.'Repository';
         $this->setReplaces($options);
     }
@@ -45,5 +45,10 @@ class ContractGenerator extends Generator
         $this->replaces['time'] = Carbon::now()->format('g:i A');
         $this->replaces['class'] = $options['class'];
         $this->replaces['namespace'] = $this->namespace;
+    }
+
+    public function infoMessage()
+    {
+        return "$this->fileName has been generated successfully";
     }
 }
