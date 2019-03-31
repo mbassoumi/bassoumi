@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
 
 use Illuminate\Foundation\Inspiring;
 

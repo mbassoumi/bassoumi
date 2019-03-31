@@ -12,7 +12,10 @@ use App\Generators\Generators\ModelGenerator;
 use App\Generators\Generators\PolicyGenerator;
 use App\Generators\Generators\PresenterGenerator;
 use App\Generators\Generators\RequestGenerator;
+use App\Generators\Generators\RouteFileGenerator;
 use App\Generators\Generators\TransformerGenerator;
+use App\Generators\Generators\TranslationFileGenerator;
+use App\Generators\Generators\ViewGenerator;
 use App\User;
 use Illuminate\Console\Command;
 use Plugins\PluginTemplate\Models\PluginTemplate;
@@ -67,14 +70,11 @@ class CreateNewModel extends Command
         $pluginsAliases = array_values($plugins);
 
 
-
         $pluginName = 'UserManagement';
         $class = 'DummyUser';
         $model_namespace = "\Plugins\UserManagement\Models\DummyUser";
         $modelName = 'majd';
 //        $plauginPath = $this->getBaseBath($pluginName);
-
-
 
 
         /*
@@ -83,6 +83,30 @@ class CreateNewModel extends Command
         php artisan make:seeder UsersTableSeeder --path="Plugins/UserManagement/database/migrations"
          */
 
+        $viewGenerator = new ViewGenerator([
+            'pluginName' => $pluginName,
+            'class' => $class,
+            'view' => 'index',
+        ]);
+
+        $viewGenerator->run();
+        dd('fuck you');
+
+
+        $translationFileGenerator = new TranslationFileGenerator([
+            'pluginName' => $pluginName,
+            'locale' => 'majd',
+            'class' => $class
+        ]);
+
+        $translationFileGenerator->run();
+
+
+        $routeFileGenerator = new RouteFileGenerator([
+            'pluginName' => $pluginName,
+            'route_file' => 'api'
+        ]);
+        $routeFileGenerator->run();
 
         $controllerGenerator = new ControllerGenerator([
             'pluginName' => $pluginName,
@@ -118,7 +142,6 @@ class CreateNewModel extends Command
         dd('fuck');
 
 
-
         $contractGenerator = new ContractGenerator([
             'pluginName' => $pluginName,
             'class' => $class,
@@ -134,8 +157,6 @@ class CreateNewModel extends Command
         ]);
 
         $eloquentGenerator->run();
-
-
 
 
         $transformerGenerator = new TransformerGenerator([
@@ -172,16 +193,11 @@ class CreateNewModel extends Command
         ]);
 
 
-
         dd('aaa');
 
         list($pluginName, $modelName, $tableName, $withSeeder, $withPresenterAndTransformer) = $this->commandQuestions($pluginsNames);
 
         $baseBath = $this->getBaseBath($pluginName);
-
-
-
-
 
 
         $bar = $this->output->createProgressBar(count($users));

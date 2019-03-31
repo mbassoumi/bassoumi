@@ -34,12 +34,36 @@ return [
         'request' => 'app/Generators/Templates/src/Http/Requests/request',
         'controller' => 'app/Generators/Templates/src/Http/Controllers/controller',
 
+        /*
+         * routes
+         */
+        'api' => 'app/Generators/Templates/routes/api',
+        'channel' => 'app/Generators/Templates/routes/channels',
+        'console' => 'app/Generators/Templates/routes/console',
+        'web' => 'app/Generators/Templates/routes/web',
 
-        'lang' => 'app/Generators/Templates/resources/lang',
-        'views' => 'app/Generators/Templates/resources/views/medelName',
-        'routes' => 'app/Generators/Templates/routes',
+        /*
+         * language file
+         */
+        'lang' => 'app/Generators/Templates/resources/lang/langfile',
+
+
+        /*
+         * model views
+         */
+        'index' => 'app/Generators/Templates/resources/views/index',
+        'create' => 'app/Generators/Templates/resources/views/create',
+        'edit' => 'app/Generators/Templates/resources/views/edit',
+        'show' => 'app/Generators/Templates/resources/views/show',
+        'entry' => 'app/Generators/Templates/resources/views/entry',
+
+
+
         /*
          * providers
          */
+
+
+
     ],
 ];
