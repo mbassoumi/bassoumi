@@ -1,0 +1,42 @@
+<?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
+
+namespace $NAMESPACE$;
+
+use Illuminate\Support\ServiceProvider;
+
+class $CLASS$ServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+
+        $this->app->register(RouteServiceProvider::class);
+        $this->app->register(HelperServiceProvider::class);
+        $this->app->register(ConfigServiceProvider::class);
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+
+        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', '$ALIAS$');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', '$ALIAS$');
+
+    }
+}

@@ -1,17 +1,17 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: majdbassoumi
- * Date: 2019-03-29
- * Time: 23:12
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
  */
 
-namespace Plugins\UserManagement\Providers;
+namespace $NAMESPACE$;
 
 use Illuminate\Support\ServiceProvider;
 
 
-class ConfigServiceProvider extends ServiceProvider
+class $CLASS$ServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

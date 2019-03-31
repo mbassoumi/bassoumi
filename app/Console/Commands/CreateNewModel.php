@@ -11,6 +11,7 @@ use App\Generators\Generators\HelperGenerator;
 use App\Generators\Generators\ModelGenerator;
 use App\Generators\Generators\PolicyGenerator;
 use App\Generators\Generators\PresenterGenerator;
+use App\Generators\Generators\ProviderGenerator;
 use App\Generators\Generators\RequestGenerator;
 use App\Generators\Generators\RouteFileGenerator;
 use App\Generators\Generators\TransformerGenerator;
@@ -18,6 +19,7 @@ use App\Generators\Generators\TranslationFileGenerator;
 use App\Generators\Generators\ViewGenerator;
 use App\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\ServiceProvider;
 use Plugins\PluginTemplate\Models\PluginTemplate;
 
 class CreateNewModel extends Command
@@ -36,6 +38,13 @@ class CreateNewModel extends Command
      */
     protected $description = 'Command description';
 
+
+    protected $pluginName;
+    protected $alias;
+
+    protected $generators = [];
+
+
     /**
      * Create a new command instance.
      *
@@ -53,6 +62,15 @@ class CreateNewModel extends Command
      */
     public function handle()
     {
+
+
+        $this->pluginName = 'DummyUser';
+        $this->alias = 'dummy_user';
+        $this->generateProviders();
+        foreach ($this->generators as $generator){
+            $generator->run();
+        }
+        dd('a7aa');
         //
 
         $barCount = 0;
@@ -248,6 +266,26 @@ class CreateNewModel extends Command
         $withPresenterAndTransformer = $this->choice('do you want to create presenter and transformer files?', ['yes', 'no'], 'yes');
 
         return [$pluginName, $modelName, $tableName, $withSeeder, $withPresenterAndTransformer];
+    }
+
+
+    public function generateProviders()
+    {
+        $providers = [
+            'Config',
+            'Helper',
+            'Route',
+            $this->pluginName
+        ];
+
+        foreach ($providers as $provider) {
+            $this->generators[] = new ProviderGenerator([
+                'pluginName' => $this->pluginName,
+                'class' => $provider,
+                'alias' => $this->alias,
+            ]);
+        }
+
     }
 
 }

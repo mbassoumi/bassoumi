@@ -58,11 +58,13 @@ return [
         'entry' => 'app/Generators/Templates/resources/views/entry',
 
 
-
         /*
          * providers
          */
-
+        'config_service_provider' => 'app/Generators/Templates/src/Providers/config_service_provider',
+        'helper_service_provider' => 'app/Generators/Templates/src/Providers/helper_service_provider',
+        'route_service_provider' => 'app/Generators/Templates/src/Providers/route_service_provider',
+        'service_provider' => 'app/Generators/Templates/src/Providers/service_provider',
 
 
     ],

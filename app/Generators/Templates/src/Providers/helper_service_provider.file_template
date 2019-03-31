@@ -1,10 +1,16 @@
 <?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
+ */
 
-namespace Plugins\UserManagement\Providers;
+namespace $NAMESPACE$;
 
 use Illuminate\Support\ServiceProvider;
 
-class HelperServiceProvider extends ServiceProvider
+class $CLASS$ServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

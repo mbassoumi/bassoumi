@@ -1,19 +1,19 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: majdbassoumi
- * Date: 2019-03-29
- * Time: 21:42
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: $DATE$
+ * Time: $TIME$
  */
 
-namespace Plugins\UserManagement\Providers;
+namespace $NAMESPACE$;
 
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
 
-class RouteServiceProvider extends ServiceProvider
+class $CLASS$ServiceProvider extends ServiceProvider
 {
     /**
      * This namespace is applied to your controller routes.
@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Plugins\UserManagement\Http\Controllers';
+    protected $namespace = '$CONTROLLER_NAMESPACE$';
 
     /**
      * Define your route model bindings, pattern filters, etc.
