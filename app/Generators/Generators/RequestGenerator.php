@@ -47,7 +47,7 @@ class RequestGenerator extends Generator
         $this->replaces['class'] = $options['class'];
         $this->replaces['namespace'] = $this->namespace;
         $this->replaces['route'] = Str::lower(Str::singular($options['class']));
-        $this->replaces['model_namespace'] = $options['model_namespace'];
+        $this->replaces['model_namespace'] = "Plugins\\$this->pluginName\\Models\\".$options['class'];
     }
 
     public function infoMessage()

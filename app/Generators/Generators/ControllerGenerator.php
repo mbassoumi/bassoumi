@@ -51,6 +51,8 @@ class ControllerGenerator extends Generator
         $this->replaces['request_namespace'] = "Plugins\\$this->pluginName\\Http\\Requests\\".$options['class']."Request";
         $this->replaces['plural'] = Str::lower(Str::plural($options['class']));
         $this->replaces['singular'] = Str::lower(Str::singular($options['class']));
+        $this->replaces['model_namespace'] = "Plugins\\$this->pluginName\\Models\\".$options['class'];
+
     }
 
     public function infoMessage()

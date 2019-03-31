@@ -45,8 +45,8 @@ class PolicyGenerator extends Generator
         $this->replaces['time'] = Carbon::now()->format('g:i A');
         $this->replaces['class'] = $options['class'];
         $this->replaces['namespace'] = $this->namespace;
-        $this->replaces['model_namespace'] = $options['model'];
-        $this->replaces['class_object'] = $options['class_object'];
+        $this->replaces['model_namespace'] = "Plugins\\$this->pluginName\\Models\\".$options['class'];
+        $this->replaces['class_object'] = lcfirst($options['class']);
     }
 
     public function infoMessage()

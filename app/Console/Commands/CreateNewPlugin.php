@@ -22,7 +22,7 @@ class CreateNewPlugin extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'create a new plugin';
 
 
     /**
@@ -86,10 +86,8 @@ class CreateNewPlugin extends Command
     public function handle()
     {
 
-//        $this->commandQuestions();
+        $this->commandQuestions();
 
-        $this->pluginName = 'DummyPlugin';
-        $this->pluginAlias = 'dummy_plugin';
         /*
          * plugin Routes Generators
          */
@@ -190,7 +188,7 @@ class CreateNewPlugin extends Command
     /**
      * check if plugin alias is valid
      *
-     * @param $pluginName
+     * @param $pluginAlias
      * @return bool
      */
     private function isValidPluginAlias($pluginAlias)

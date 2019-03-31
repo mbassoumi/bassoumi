@@ -45,7 +45,7 @@ class EloquentGenerator extends Generator
         $this->replaces['time'] = Carbon::now()->format('g:i A');
         $this->replaces['class'] = $options['class'];
         $this->replaces['namespace'] = $this->namespace;
-        $this->replaces['model_namespace'] = $options['model_namespace'];
+        $this->replaces['model_namespace'] = "Plugins\\$this->pluginName\\Models\\".$options['class'];
         $this->replaces['repository_namespace'] = "Plugins\\$this->pluginName\\Repositories\\Contracts\\".$options['class']."Repository";
     }
 

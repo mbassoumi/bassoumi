@@ -13,7 +13,7 @@ This is a laravel 5.8 project with repository design pattern.
 
 To generate a plugin:
 ```php
-php artisan plugin:create {plugin_name}
+php artisan plugin:create
 ```
 To generate a model with crud
 ```php

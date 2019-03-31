@@ -14,6 +14,7 @@ use App\Http\Controllers\AuthController as Controller;
 use Illuminate\Http\Request;
 use $REQUEST_NAMESPACE$;
 use $REPOSITORY_NAMESPACE$;
+use $MODEL_NAMESPACE$;
 
 /**
  * Class $CONTROLLER$Controller.
@@ -149,7 +150,7 @@ class $CONTROLLER$Controller extends Controller
      * @return Response
      *
      */
-    public function update($CLASS$UpdateRequest $request, $CLASS$ $model)
+    public function update($CLASS$Request $request, $CLASS$ $model)
     {
         try {
 

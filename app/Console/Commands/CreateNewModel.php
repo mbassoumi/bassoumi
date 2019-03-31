@@ -3,24 +3,20 @@
 namespace App\Console\Commands;
 
 use App\Generators\Generators\ClassGenerator;
-use App\Generators\Generators\ConfigGenerator;
 use App\Generators\Generators\ContractGenerator;
 use App\Generators\Generators\ControllerGenerator;
 use App\Generators\Generators\EloquentGenerator;
-use App\Generators\Generators\HelperGenerator;
 use App\Generators\Generators\ModelGenerator;
 use App\Generators\Generators\PolicyGenerator;
 use App\Generators\Generators\PresenterGenerator;
-use App\Generators\Generators\ProviderGenerator;
 use App\Generators\Generators\RequestGenerator;
-use App\Generators\Generators\RouteFileGenerator;
 use App\Generators\Generators\TransformerGenerator;
 use App\Generators\Generators\TranslationFileGenerator;
 use App\Generators\Generators\ViewGenerator;
-use App\User;
 use Illuminate\Console\Command;
-use Illuminate\Support\ServiceProvider;
-use Plugins\PluginTemplate\Models\PluginTemplate;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class CreateNewModel extends Command
 {
@@ -36,14 +32,55 @@ class CreateNewModel extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'create a new model with its crud';
 
 
+    /**
+     * plugin name
+     *
+     * @var string
+     */
     protected $pluginName;
-    protected $alias;
 
-    protected $generators = [];
+    /**
+     * model name
+     *
+     * @var
+     */
+    protected $modelName;
 
+    /**
+     * model name
+     *
+     * @var
+     */
+    protected $tableName;
+
+
+    /**
+     * list of all plugins name in system
+     *
+     * @var array
+     */
+    protected $allPluginsNames;
+
+    /**
+     * list of all plugins aliases in the system
+     *
+     * @var array
+     */
+    protected $allPluginsAliases;
+
+
+    /**
+     * plugin generators
+     *
+     * @var array
+     */
+    protected $generators;
+
+
+    protected $filesystem;
 
     /**
      * Create a new command instance.
@@ -53,6 +90,14 @@ class CreateNewModel extends Command
     public function __construct()
     {
         parent::__construct();
+
+
+        $plugins = config('plugins.plugins_list');
+        $this->allPluginsNames = array_keys($plugins);
+        $this->allPluginsAliases = array_values($plugins);
+
+        $this->filesystem = new Filesystem();
+        $this->generators = [];
     }
 
     /**
@@ -62,235 +107,208 @@ class CreateNewModel extends Command
      */
     public function handle()
     {
+//        $this->commandQuestions();
 
-        $this->question('a7aaa');
-        $this->comment('a7aaa');
-        $this->line('a7aaa');
-        $this->info('a7aaa');
-        $this->error('a7aaa');
-
-        $this->pluginName = 'DummyUser';
-        $this->alias = 'dummy_user';
-        $this->generateProviders();
-        foreach ($this->generators as $generator){
-            $generator->run();
-        }
-        dd('a7aa');
-        //
-
-        $barCount = 0;
-
-        $users = User::query()->limit(5)->select(['name', 'email'])->get();
-
-        $this->question('a7aaa');
-        $this->comment('a7aaa');
-        $this->line('a7aaa');
-        $this->info('a7aaa');
-        $this->error('a7aaa');
-
-        $plugins = config('plugins.plugins_list');
-        $pluginsNames = array_keys($plugins);
-        $pluginsAliases = array_values($plugins);
-
-
-        $pluginName = 'UserManagement';
-        $class = 'DummyUser';
-        $model_namespace = "\Plugins\UserManagement\Models\DummyUser";
-        $modelName = 'majd';
-//        $plauginPath = $this->getBaseBath($pluginName);
-
+        $this->pluginName = 'DummyPlugin';
+        $this->modelName = 'SecondDummyPost';
+        $this->tableName = 'second_dummy_posts';
 
         /*
-
-        php artisan make:migration create_majd_table --create=majds --path="Plugins/UserManagement/database/migrations"
-        php artisan make:seeder UsersTableSeeder --path="Plugins/UserManagement/database/migrations"
+         * translations generator
          */
-
-        $viewGenerator = new ViewGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
-            'view' => 'index',
+        $this->generators[] = new TranslationFileGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
+            'locale' => 'en',
         ]);
 
-        $viewGenerator->run();
-        dd('fuck you');
+        /*
+         * views generators
+         */
+        $this->viewsGenerator();
 
 
-        $translationFileGenerator = new TranslationFileGenerator([
-            'pluginName' => $pluginName,
-            'locale' => 'majd',
-            'class' => $class
+        $this->generators[] = new ClassGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
         ]);
 
-        $translationFileGenerator->run();
-
-
-        $routeFileGenerator = new RouteFileGenerator([
-            'pluginName' => $pluginName,
-            'route_file' => 'api'
-        ]);
-        $routeFileGenerator->run();
-
-        $controllerGenerator = new ControllerGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
+        $this->generators[] = new ContractGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
         ]);
 
-        $controllerGenerator->run();
-
-        dd('a7aaaa');
-        $requestGenerator = new RequestGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
-            'model_namespace' => $model_namespace,
+        $this->generators[] = new ControllerGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
         ]);
 
-        $requestGenerator->run();
-
-        dd('fuck');
-
-        $classGenerator = new ClassGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
+        $this->generators[] = new EloquentGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
         ]);
 
-        $helperGenerator = new HelperGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
+        $this->generators[] = new ModelGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
+            'table_name' => $this->tableName
         ]);
 
-        $classGenerator->run();
-        $helperGenerator->run();
-
-        dd('fuck');
-
-
-        $contractGenerator = new ContractGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
+        $this->generators[] = new PolicyGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
         ]);
 
-        $contractGenerator->run();
-
-
-        $eloquentGenerator = new EloquentGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
-            'model_namespace' => $model_namespace,
+        $this->generators[] = new PresenterGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
         ]);
 
-        $eloquentGenerator->run();
+        $this->generators[] = new RequestGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
+        ]);
 
-
-        $transformerGenerator = new TransformerGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
-            'model_namespace' => $model_namespace,
+        $this->generators[] = new TransformerGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName,
         ]);
 
 
-        $presenterGenerator = new PresenterGenerator([
-            'pluginName' => $pluginName,
-            'class' => $class,
-        ]);
+        $barCount = count($this->generators) + 1;
 
-        $policyGenerator = new PolicyGenerator([
-            'pluginName' => $pluginName,
-            'class' => 'User',
-            'model' => \Plugins\UserManagement\Models\User::class,
-            'class_object' => 'user2',
-        ]);
-
-        $modelGenerator = new ModelGenerator([
-            'pluginName' => $pluginName,
-            'class' => 'MajdModel',
-            'table_name' => 'majd_table',
-        ]);
-
-
-        $configGenerator = new ConfigGenerator([
-            'pluginName' => $pluginName,
-            'modelName' => 'MajdModel',
-            'tableName' => 'majd_table',
-            'modelPath' => \Plugins\UserManagement\Models\User::class,
-        ]);
-
-
-        dd('aaa');
-
-        list($pluginName, $modelName, $tableName, $withSeeder, $withPresenterAndTransformer) = $this->commandQuestions($pluginsNames);
-
-        $baseBath = $this->getBaseBath($pluginName);
-
-
-        $bar = $this->output->createProgressBar(count($users));
+        $bar = $this->output->createProgressBar($barCount);
 
         $bar->start();
 
-        foreach ($users as $user) {
-            $this->performTask($user);
-
+        try {
+            $this->migrationGenerator();
             $bar->advance();
+            $this->info('migration file has been generated successfully');
+        } catch (\Exception $exception) {
+            $bar->advance();
+            $this->error($exception->getMessage());
         }
 
+        foreach ($this->generators as $generator) {
+            try {
+                $generator->run();
+                $bar->advance();
+                $this->info($generator->infoMessage());
+            } catch (\Exception $exception) {
+                $bar->advance();
+                $this->error($exception->getMessage());
+            }
+
+        }
         $bar->finish();
 
+        $this->line('');
+        $this->question('Plugin has been generated Successfully');
     }
 
 
-    public function performTask($user)
-    {
-        $this->error($user->name);
-    }
-
-
-    private function commandQuestions($pluginsNames)
+    /**
+     * command questions
+     *
+     * fill $this->pluginName
+     * fill $this->modelName
+     * fill $this->tableName
+     */
+    private function commandQuestions()
     {
         $this->question('Answer The following questions please');
 
-        $modelName = null;
-        while (is_null($modelName)) {
-            $modelName = $this->ask('What is your model name?');
-            if (is_null($modelName)) {
-                $this->error('Model name can\'t be null');
+        $this->pluginName = $this->choice('What is your plugin name?', $this->allPluginsNames);
+
+        $this->modelName = null;
+        while (true) {
+            $this->modelName = $this->ask('What is your model name?');
+            if ($this->isValidModelName($this->modelName)) {
+                break;
             }
+            $this->error('Invalid Model Name');
         }
 
-        $pluginName = $this->choice('What is your package name?', $pluginsNames);
-
-        $tableName = null;
-        while (is_null($tableName)) {
-            $tableName = $this->ask('What is your table name?');
-            if (is_null($tableName)) {
-                $this->error('Table name can\'t be null');
+        $this->tableName = null;
+        while (true) {
+            $this->tableName = $this->ask('What is your database table name?');
+            if ($this->isValidTableName($this->tableName)) {
+                break;
             }
+            $this->error('Invalid Table Name');
         }
 
-        $withSeeder = $this->choice('do you want to create seeder file?', ['yes', 'no'], 'yes');
-
-        $withPresenterAndTransformer = $this->choice('do you want to create presenter and transformer files?', ['yes', 'no'], 'yes');
-
-        return [$pluginName, $modelName, $tableName, $withSeeder, $withPresenterAndTransformer];
     }
 
 
-    public function generateProviders()
+    /**
+     * check if model name is valid
+     *
+     * @param $modelName
+     * @return bool
+     */
+    private function isValidModelName($modelName)
     {
-        $providers = [
-            'Config',
-            'Helper',
-            'Route',
-            $this->pluginName
+        if (is_null($modelName)
+            or !preg_match('/^[A-Z][a-zA-Z]+$/', $modelName)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * check if database table name is valid
+     *
+     * @param $tableName
+     * @return bool
+     */
+    private function isValidTableName($tableName)
+    {
+        if (is_null($tableName)
+            or !preg_match('/^[a-z_]+$/', $tableName)) {
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * get model views generator objects
+     */
+    public function viewsGenerator()
+    {
+        $views = [
+            'index',
+            'create',
+            'edit',
+            'show',
+            'entry',
         ];
 
-        foreach ($providers as $provider) {
-            $this->generators[] = new ProviderGenerator([
+        foreach ($views as $view) {
+            $this->generators[] = new ViewGenerator([
                 'pluginName' => $this->pluginName,
-                'class' => $provider,
-                'alias' => $this->alias,
+                'class' => $this->modelName,
+                'view' => $view,
             ]);
         }
+    }
 
+
+    public function migrationGenerator()
+    {
+        $path = "Plugins/$this->pluginName/database/migrations";
+
+        if (!$this->filesystem->isDirectory($path)) {
+            $this->filesystem->makeDirectory($path, 0777, true, true);
+        }
+
+        Artisan::call('make:migration', [
+            'name' => 'create_' . $this->tableName . '_table',
+            '--create' => $this->tableName,
+            '--path' => $path,
+        ]);
     }
 
 }
