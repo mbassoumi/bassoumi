@@ -38,5 +38,8 @@ class $CLASS$ServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', '$ALIAS$');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', '$ALIAS$');
 
+        /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
+
+
     }
 }

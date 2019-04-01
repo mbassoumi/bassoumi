@@ -1,0 +1,4 @@
+/*
+ * register $CLASS$ServiceProvider
+ */
+$this->app->register($CLASS_NAMESPACE$::class);

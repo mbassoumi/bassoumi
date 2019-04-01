@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 Route::get('/', function () {
     return redirect('home');
 //    return view('welcome');
@@ -49,4 +52,33 @@ Route::get('majd', function (\Illuminate\Http\Request $request){
     $data->additional($additionalDataForDatatable);
     return $data;
 
+});
+
+
+Route::get('a7a', function (){
+    $string = "MajdBasemBassoumi";
+    preg_match_all('/((?:^|[A-Z])[a-z]+)/',$string,$matches);
+    $matches = Arr::flatten($matches);
+    $pluginNameParameters = array_keys(array_flip($matches));
+    $routeGroup = implode('-', $pluginNameParameters);
+    $routeGroup = Str::lower($routeGroup);
+    return $routeGroup;
+});
+
+
+
+
+Route::group(['prefix' => '$GROUP_PREFIX$', 'as' => '$GROUP_PREFIX_NAME$'], function () {
+
+    Route::resource('', '$CLASS$Controller', [
+        'names' => [
+            'create' => '.create',
+            'store' => '.store',
+            'edit' => '.edit',
+            'show' => '.show',
+            'update' => '.update',
+            'destroy' => '.destroy',
+            'index' => '.index'
+        ]
+    ]);
 });

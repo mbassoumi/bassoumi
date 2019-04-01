@@ -7,6 +7,8 @@ use App\Generators\Generators\ContractGenerator;
 use App\Generators\Generators\ControllerGenerator;
 use App\Generators\Generators\EloquentGenerator;
 use App\Generators\Generators\ModelGenerator;
+use App\Generators\Generators\PartialGenerators\RegisterBindingsGenerator;
+use App\Generators\Generators\PartialGenerators\RouteGenerator;
 use App\Generators\Generators\PolicyGenerator;
 use App\Generators\Generators\PresenterGenerator;
 use App\Generators\Generators\RequestGenerator;
@@ -107,11 +109,11 @@ class CreateNewModel extends Command
      */
     public function handle()
     {
-//        $this->commandQuestions();
+        $this->commandQuestions();
 
-        $this->pluginName = 'DummyPlugin';
-        $this->modelName = 'SecondDummyPost';
-        $this->tableName = 'second_dummy_posts';
+//        $this->pluginName = 'DummyPlugin';
+//        $this->modelName = 'SecondDummyPost';
+//        $this->tableName = 'second_dummy_posts';
 
         /*
          * translations generator
@@ -172,6 +174,16 @@ class CreateNewModel extends Command
         $this->generators[] = new TransformerGenerator([
             'pluginName' => $this->pluginName,
             'class' => $this->modelName,
+        ]);
+
+        $this->generators[] = new RouteGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName
+        ]);
+
+        $this->generators[] = new RegisterBindingsGenerator([
+            'pluginName' => $this->pluginName,
+            'class' => $this->modelName
         ]);
 
 

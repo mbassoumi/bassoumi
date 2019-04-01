@@ -17,6 +17,10 @@ return [
     'plugins_list' => [
         'PluginTemplate' => 'plugin_template',
         'UserManagement' => 'user_management',
+
+
+        /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
+
     ],
 
     'templates_path' => [
@@ -66,6 +70,10 @@ return [
         'route_service_provider' => 'app/Generators/Templates/src/Providers/route_service_provider',
         'service_provider' => 'app/Generators/Templates/src/Providers/service_provider',
 
+        'model_routes' => 'app/Generators/Templates/PartialTemplates/model_routes',
 
+        'add_plugin_to_app_service_provider' => 'app/Generators/Templates/PartialTemplates/add_plugin_to_app_service_provider',
+        'add_plugin_to_config' => 'app/Generators/Templates/PartialTemplates/add_plugin_to_config',
+        'bindings' => 'app/Generators/Templates/PartialTemplates/bindings',
     ],
 ];

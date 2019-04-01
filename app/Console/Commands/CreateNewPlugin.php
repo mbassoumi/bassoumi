@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Generators\Generators\ConfigGenerator;
 use App\Generators\Generators\HelperGenerator;
+use App\Generators\Generators\PartialGenerators\AddNewPluginToConfigGenerator;
+use App\Generators\Generators\PartialGenerators\RegisterNewPluginGenerator;
 use App\Generators\Generators\ProviderGenerator;
 use App\Generators\Generators\RouteFileGenerator;
 use Illuminate\Console\Command;
@@ -113,6 +115,15 @@ class CreateNewPlugin extends Command
             'pluginName' => $this->pluginName,
         ]);
 
+
+        $this->generators[] = new AddNewPluginToConfigGenerator([
+            'pluginName' => $this->pluginName,
+            'pluginAlias' => $this->pluginAlias,
+        ]);
+
+        $this->generators[] = new RegisterNewPluginGenerator([
+            'pluginName' => $this->pluginName,
+        ]);
 
         $bar = $this->output->createProgressBar(count($this->generators));
 

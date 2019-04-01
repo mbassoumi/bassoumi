@@ -1,0 +1,4 @@
+/*
+ * register $CLASS$ repository
+ */
+$this->app->bind($REPOSITORY$::class, $ELOQUENT$::class);

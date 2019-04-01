@@ -17,7 +17,14 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 //        $this->app->register(PluginTemplateServiceProvider::class);
+        /*
+         * register MyNewPluginServiceProvider
+         */
         $this->app->register(UserManagementServiceProvider::class);
+
+
+        /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
+
     }
 
     /**

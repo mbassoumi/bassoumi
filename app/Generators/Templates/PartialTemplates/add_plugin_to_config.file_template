@@ -1,0 +1,4 @@
+        /*
+         * register $CLASS$ in config list
+         */
+         "$CLASS$" => "$ALIAS$",
