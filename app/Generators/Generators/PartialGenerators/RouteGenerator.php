@@ -59,7 +59,7 @@ class RouteGenerator extends Generator
         $this->replaces['group_prefix'] = $this->getRouteGroupPrefix();
         $this->replaces['group_prefix_name'] = $this->getRouteGroupName();
         $content = $this->getFileTemplate();
-        $this->routeContent = $content . PHP_EOL . '          ' . PHP_EOL . $this->replaceHint;
+        $this->routeContent = $content . PHP_EOL . '          ' . $this->replaceHint;
     }
 
     public function getRouteGroupPrefix()

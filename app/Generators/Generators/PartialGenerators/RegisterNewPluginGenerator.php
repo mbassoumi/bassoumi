@@ -58,7 +58,7 @@ class RegisterNewPluginGenerator extends Generator
         $this->replaces['class'] = $options['pluginName'];
         $this->replaces['class_namespace'] = "\\Plugins\\{$this->pluginName}\\Providers\\{$options['pluginName']}ServiceProvider";
         $content = $this->getFileTemplate();
-        $this->registerContent = $content . PHP_EOL . '          ' . PHP_EOL . $this->replaceHint;
+        $this->registerContent = $content . PHP_EOL . '          ' . $this->replaceHint;
     }
 
     public function infoMessage()

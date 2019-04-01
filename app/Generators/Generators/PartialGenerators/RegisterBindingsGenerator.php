@@ -60,7 +60,7 @@ class RegisterBindingsGenerator extends Generator
         $this->replaces['eloquent'] = "\\Plugins\\{$this->pluginName}\\Repositories\\Eloquent\\{$options['class']}RepositoryEloquent";
 
         $content = $this->getFileTemplate();
-        $this->bindingContent = $content . PHP_EOL . '          ' . PHP_EOL . $this->replaceHint;
+        $this->bindingContent = $content . PHP_EOL . '          ' . $this->replaceHint;
     }
 
     public function infoMessage()

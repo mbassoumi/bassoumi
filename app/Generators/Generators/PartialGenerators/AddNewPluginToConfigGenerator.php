@@ -58,7 +58,7 @@ class AddNewPluginToConfigGenerator extends Generator
         $this->replaces['class'] = $options['pluginName'];
         $this->replaces['alias'] = $options['pluginAlias'];
         $content = $this->getFileTemplate();
-        $this->configContent = $content . PHP_EOL . '          ' . PHP_EOL . $this->replaceHint;
+        $this->configContent = $content . PHP_EOL . '          ' . $this->replaceHint;
     }
 
 

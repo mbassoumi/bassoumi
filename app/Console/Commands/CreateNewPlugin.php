@@ -9,6 +9,7 @@ use App\Generators\Generators\PartialGenerators\RegisterNewPluginGenerator;
 use App\Generators\Generators\ProviderGenerator;
 use App\Generators\Generators\RouteFileGenerator;
 use Illuminate\Console\Command;
+use Illuminate\Support\Composer;
 
 class CreateNewPlugin extends Command
 {
@@ -33,6 +34,8 @@ class CreateNewPlugin extends Command
      * @var string
      */
     protected $pluginName;
+
+    protected  $composer;
 
     /**
      * plugin alias
@@ -67,9 +70,10 @@ class CreateNewPlugin extends Command
     /**
      * Create a new command instance.
      *
+     * @param $composer
      * @return void
      */
-    public function __construct()
+    public function __construct(Composer $composer)
     {
         parent::__construct();
 
@@ -141,6 +145,9 @@ class CreateNewPlugin extends Command
 
         }
         $bar->finish();
+
+        $this->composer->dumpAutoloads();
+
 
         $this->line('');
         $this->question('Plugin has been generated Successfully');
