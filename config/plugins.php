@@ -15,12 +15,13 @@ return [
      */
 
     'plugins_list' => [
-        'PluginTemplate' => 'plugin_template',
-        'UserManagement' => 'user_management',
 
+                  /*
+         * register UserManagement in config list
+         */
+         "UserManagement" => "user_management",
 
-        /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
-
+          /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
     ],
 
     'templates_path' => [

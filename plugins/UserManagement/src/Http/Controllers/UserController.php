@@ -1,18 +1,25 @@
 <?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: 01-04-2019
+ * Time: 2:43 PM
+ */
+
 
 namespace Plugins\UserManagement\Http\Controllers;
 
 
 use App\Http\Controllers\AuthController as Controller;
-use Plugins\UserManagement\Http\Requests\UserCreateRequest;
-use Plugins\UserManagement\Http\Requests\UserUpdateRequest;
-use Prettus\Validator\Exceptions\ValidatorException;
+use Illuminate\Http\Request;
+use Plugins\UserManagement\Http\Requests\UserRequest;
 use Plugins\UserManagement\Repositories\Contracts\UserRepository;
+use Plugins\UserManagement\Models\User;
 
 /**
  * Class UserController.
  *
- * @package namespace App\User\Http\Controllers;
+ * @package Plugins\UserManagement\Http\Controllers
  */
 class UserController extends Controller
 {
@@ -31,7 +38,6 @@ class UserController extends Controller
         $this->repository = $repository;
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -40,36 +46,46 @@ class UserController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $PluginTemplates = $this->repository->all();
+        $users = $this->repository->all();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $PluginTemplates,
+                'data' => $users,
             ]);
         }
 
-        return view('PluginTemplates.index', compact('PluginTemplates'));
+        return view('user_management::users.index', compact('users'));
+    }
+
+
+    /**
+     * Create a new users.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(UserRequest $request)
+    {
+        return view('users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  UserCreateRequest $request
+     * @param  UserRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      */
-    public function store(UserCreateRequest $request)
+    public function store(UserRequest $request)
     {
         try {
 
-
-            $PluginTemplate = $this->repository->create($request->all());
+            $user = $this->repository->create($request->all());
 
             $response = [
                 'message' => 'User created.',
-                'data'    => $PluginTemplate->toArray(),
+                'data'    => $user->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -99,16 +115,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $PluginTemplate = $this->repository->find($id);
+        $user = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $PluginTemplate,
+                'data' => $user,
             ]);
         }
 
-        return view('PluginTemplates.show', compact('PluginTemplate'));
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -120,31 +136,29 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $PluginTemplate = $this->repository->find($id);
+        $user = $this->repository->find($id);
 
-        return view('PluginTemplates.edit', compact('PluginTemplate'));
+        return view('users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserUpdateRequest $request
+     * @param  UserRequest $request
      * @param  string            $id
      *
      * @return Response
      *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(UserRequest $request, User $model)
     {
         try {
 
-
-            $PluginTemplate = $this->repository->update($request->all(), $id);
+            $user = $this->repository->update($request->all(), $model->id);
 
             $response = [
                 'message' => 'User updated.',
-                'data'    => $PluginTemplate->toArray(),
+                'data'    => $user->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -153,7 +167,7 @@ class UserController extends Controller
             }
 
             return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
+        } catch (\Exception $e) {
 
             if ($request->wantsJson()) {
 
@@ -175,9 +189,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $model)
     {
-        $deleted = $this->repository->delete($id);
+        $deleted = $this->repository->delete($$model->id);
 
         if (request()->wantsJson()) {
 

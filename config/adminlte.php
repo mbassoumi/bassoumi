@@ -123,7 +123,9 @@ return [
             'label'       => 'users',
             'label_color' => 'success',
         ],
-        "Log Viewer",
+
+
+        "LOGS",
         [
             'text'        => 'Log Dashboard',
             'url'         => 'log-viewer',
@@ -133,6 +135,13 @@ return [
             'text'        => 'Logs',
             'url'         => 'log-viewer/logs',
             'icon'        => 'file',
+        ],
+
+        "USERS",
+        [
+            'text'        => 'Users',
+            'url'         => 'user-management/users',
+            'icon'        => 'users',
         ],
 
 
@@ -154,7 +163,7 @@ return [
         [
             'text' => 'Profile',
             'url'  => 'admin/settings',
-            'icon' => 'user',
+            'icon' => 'users',
         ],
         [
             'text' => 'Change Password',

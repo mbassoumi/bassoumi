@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: 01-04-2019
+ * Time: 2:42 PM
+ */
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +19,26 @@
 
 
 
-Route::get('majd2', function (){
-    $a = config('user.a7a');
-    dd($a);
+
+
+/*
+ * User routes
+ */
+Route::group(['prefix' => 'users-management/users', 'as' => 'users-management.users'], function () {
+
+    Route::resource('', 'UserController', [
+        'names' => [
+            'create' => '.create',
+            'store' => '.store',
+            'edit' => '.edit',
+            'show' => '.show',
+            'update' => '.update',
+            'destroy' => '.destroy',
+            'index' => '.index'
+        ]
+    ]);
 });
 
-Route::get('fuck', 'UserController@fuck');
+
+
+          /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/

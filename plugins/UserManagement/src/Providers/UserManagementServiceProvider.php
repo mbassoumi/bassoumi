@@ -1,10 +1,14 @@
 <?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: 01-04-2019
+ * Time: 2:42 PM
+ */
 
 namespace Plugins\UserManagement\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Plugins\UserManagement\Repositories\Contracts\UserRepository;
-use Plugins\UserManagement\Repositories\Eloquent\UserRepositoryEloquent;
 
 class UserManagementServiceProvider extends ServiceProvider
 {
@@ -34,9 +38,13 @@ class UserManagementServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'user_management');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'user_management');
 
-        $this->app->bind(
-            UserRepository::class,
-            UserRepositoryEloquent::class);
-        //:end-bindings:
+        /*
+ * register User repository
+ */
+$this->app->bind(\Plugins\UserManagement\Repositories\Contracts\UserRepository::class, \Plugins\UserManagement\Repositories\Eloquent\UserRepositoryEloquent::class);
+
+          /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
+
+
     }
 }

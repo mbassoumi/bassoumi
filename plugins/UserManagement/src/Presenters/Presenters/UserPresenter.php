@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: 01-04-2019
+ * Time: 2:43 PM
+ */
 
 namespace Plugins\UserManagement\Presenters\Presenters;
 
@@ -8,7 +14,7 @@ use Prettus\Repository\Presenter\FractalPresenter;
 /**
  * Class UserPresenter.
  *
- * @package namespace App\User\Presenters\Presenters;
+ * @package Plugins\UserManagement\Presenters\Presenters
  */
 class UserPresenter extends FractalPresenter
 {

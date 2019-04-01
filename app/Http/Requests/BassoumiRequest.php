@@ -47,7 +47,7 @@ abstract class BassoumiRequest extends FormRequest
     }
 
     /**
-     * Check user of the request can do $action.
+     * Check users of the request can do $action.
      *
      * @param string $action
      * @return bool

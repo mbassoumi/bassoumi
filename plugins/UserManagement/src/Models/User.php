@@ -1,22 +1,25 @@
 <?php
+/**
+ * Created by Bassoumi Generation command.
+ * User: Majd Bassoumi
+ * Date: 01-04-2019
+ * Time: 2:43 PM
+ */
 
 namespace Plugins\UserManagement\Models;
 
-use App\User as Model;
+use App\Model;
 
 /**
  * Class User.
  *
- * @package namespace Plugins\User\Models;
+ * @package Plugins\UserManagement\Models
  */
 class User extends Model
 {
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [];
-
+     protected $table       =       'users';
+     protected $casts       =       [];
+     protected $dates       =       [];
+     protected $fillable    =       [];
 }

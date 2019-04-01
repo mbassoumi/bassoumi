@@ -77,6 +77,7 @@ class CreateNewPlugin extends Command
     {
         parent::__construct();
 
+        $this->composer = $composer;
         $plugins = config('plugins.plugins_list');
         $this->allPluginsNames = array_keys($plugins);
         $this->allPluginsAliases = array_values($plugins);

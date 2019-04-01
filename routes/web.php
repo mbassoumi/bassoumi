@@ -64,21 +64,3 @@ Route::get('a7a', function (){
     $routeGroup = Str::lower($routeGroup);
     return $routeGroup;
 });
-
-
-
-
-Route::group(['prefix' => '$GROUP_PREFIX$', 'as' => '$GROUP_PREFIX_NAME$'], function () {
-
-    Route::resource('', '$CLASS$Controller', [
-        'names' => [
-            'create' => '.create',
-            'store' => '.store',
-            'edit' => '.edit',
-            'show' => '.show',
-            'update' => '.update',
-            'destroy' => '.destroy',
-            'index' => '.index'
-        ]
-    ]);
-});
