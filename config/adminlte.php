@@ -123,11 +123,18 @@ return [
             'label'       => 'users',
             'label_color' => 'success',
         ],
+        "Log Viewer",
         [
-            'text'        => 'Log Viewer',
+            'text'        => 'Log Dashboard',
             'url'         => 'log-viewer',
             'icon'        => 'file',
         ],
+        [
+            'text'        => 'Logs',
+            'url'         => 'log-viewer/logs',
+            'icon'        => 'file',
+        ],
+
 
 
         'MAIN NAVIGATION',

@@ -1,15 +1,19 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="LogViewer">
-    <meta name="author" content="ARCANEDEV">
-    <title>LogViewer</title>
+@extends('adminlte::page')
+
+@section('title', 'DataTable')
+
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
+
+@section('css')
+
     {{-- Styles --}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
+{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--}}
+{{--    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>--}}
+
+
     <style>
         html {
             position: relative;
@@ -17,7 +21,7 @@
         }
 
         body {
-            font-size: .875rem;
+            /*font-size: .875rem;*/
             margin-bottom: 60px;
         }
 
@@ -48,7 +52,7 @@
 
         .navbar-brand {
             padding: .75rem 1rem;
-            font-size: 1rem;
+            /*font-size: 1rem;*/
         }
 
         .navbar-nav .nav-link {
@@ -83,7 +87,7 @@
             float: left;
             height: 70px; width: 70px;
             text-align: center;
-            font-size: 40px;
+            /*font-size: 40px;*/
             line-height: 70px;
             background: rgba(0,0,0,0.2);
         }
@@ -95,11 +99,11 @@
 
         .box .box-content .box-text {
             display: block;
-            font-size: 1rem;
+            /*font-size: 1rem;*/
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-weight: 600;
+            /*font-weight: 600;*/
         }
 
         .box .box-content .box-number {
@@ -133,9 +137,9 @@
 
         .stack-content {
             color: #AE0E0E;
-            font-family: consolas, Menlo, Courier, monospace;
+            /*font-family: consolas, Menlo, Courier, monospace;*/
             white-space: pre-line;
-            font-size: .8rem;
+            /*font-size: .8rem;*/
         }
 
         /*
@@ -211,8 +215,20 @@
             background-color: #6A1B9A;
         }
     </style>
-</head>
-<body>
+
+@stop
+
+@section('content')
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="LogViewer">
+    <meta name="author" content="ARCANEDEV">
+    <title>LogViewer</title>
+
+
+
+
     <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark p-0">
         <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand mr-0">
             <i class="fa fa-fw fa-book"></i> LogViewer
@@ -254,6 +270,13 @@
         </div>
     </footer>
 
+
+@stop
+
+
+
+@section('js')
+
     {{-- Scripts --}}
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -262,5 +285,22 @@
 
     @yield('modals')
     @yield('scripts')
-</body>
+
+@stop
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+
+</head>
 </html>
