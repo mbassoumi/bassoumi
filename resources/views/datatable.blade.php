@@ -8,6 +8,9 @@
 
 @section('content')
     <p>datatable</p>
+    <div id="test-modal" class="modal">
+        <h1>yahoooo</h1>
+    </div>
     <table id="example" class="display nowrap" style="width:100%">
         <thead>
         <tr>
@@ -37,7 +40,7 @@
             </th>
             <th>
                 {{--<input type="text" class="column_search" placeholder="Created At"/>--}}
-                <input type="text" class="column_search" id="created_at" name="daterange" value="" />
+                <input type="text" class="daterange" id="created_at" name="daterange" value=""/>
             </th>
             <th>
                 <input type="text" class="column_search" placeholder="Updated At"/>
@@ -60,7 +63,7 @@
     <script>
         $(document).ready(function () {
 
-
+            $('#test-modal').modal();
 
             var table = $('#example').DataTable({
                 serverSide: true,
@@ -107,22 +110,6 @@
                     $(table.cells().nodes()).removeClass('highlight');
                     $(table.column(colIdx).nodes()).addClass('highlight');
                 });
-
-            $('input[name="daterange"]').daterangepicker({
-                // autoUpdateInput: true,
-                locale: {
-                    cancelLabel: 'Clear'
-                },
-                opens: 'left'
-            }, function (start, end, label) {
-
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
-
-
-            $('#created_at').keyup( function() {
-                table.draw();
-            } );
 
 
         });
