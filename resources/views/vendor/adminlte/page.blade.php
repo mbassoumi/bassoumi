@@ -117,6 +117,8 @@
 
                 @yield('content')
 
+                @include('base::popup')
+
             </section>
             <!-- /.content -->
             @if(config('adminlte.layout') == 'top-nav')

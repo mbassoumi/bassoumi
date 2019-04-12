@@ -19,6 +19,7 @@ class UserResource extends JsonResource
 
         return [
             'id' => $this->id,
+            'popup_url' => route('majd-dummy-show', ['id' => $this->id]),
             'name' => $this->name,
             'email' => $this->email,
             'has_car' => rand(1, 2) == 1 ? 'yes' : 'no',

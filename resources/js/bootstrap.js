@@ -1,5 +1,8 @@
 
 window._ = require('lodash');
+window.blockUI = require('block-ui');
+window.jquery = require('jquery-modal');
+
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

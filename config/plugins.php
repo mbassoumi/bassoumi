@@ -21,6 +21,11 @@ return [
          */
          "UserManagement" => "user_management",
 
+                  /*
+         * register Base in config list
+         */
+         "Base" => "base",
+
           /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
     ],
 

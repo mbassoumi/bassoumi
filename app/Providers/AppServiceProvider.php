@@ -22,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
  */
 $this->app->register(\Plugins\UserManagement\Providers\UserManagementServiceProvider::class);
 
+          /*
+ * register BaseServiceProvider
+ */
+$this->app->register(\Plugins\Base\Providers\BaseServiceProvider::class);
+
           /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
 
     }

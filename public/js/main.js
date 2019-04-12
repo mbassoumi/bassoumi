@@ -12,11 +12,11 @@ $(document).ajaxStop(function () {
 
 
 function initElements() {
-    $(document).on('click', '.daterange', function() {
-        // $.blockUI();
-        // showBlockUI();
-        $(this).modal('show')
-    });
+    // $(document).on('click', '.daterange', function() {
+    //     // $.blockUI();
+    //     // showBlockUI();
+    //     $(this).modal('show')
+    // });
     $('input[class="daterange"]').daterangepicker({
         // autoUpdateInput: true,
         locale: {

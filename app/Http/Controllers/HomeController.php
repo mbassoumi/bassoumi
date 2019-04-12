@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Plugins\Base\src\classes\TestDataTable;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,10 @@ class HomeController extends Controller
     }
 
 
-    public function datatable()
+    public function datatable(TestDataTable $testDataTable)
     {
-        return view('datatable');
+        $datatable = $testDataTable->run();
+//        dd($datatable);
+        return view('datatable', ['datatable' => $datatable]);
     }
 }
