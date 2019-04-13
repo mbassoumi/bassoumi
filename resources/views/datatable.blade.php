@@ -8,21 +8,19 @@
 
 @section('content')
 
-    {!! $datatable !!}
-{{--    @include('base::datatable.table', [--}}
-{{--        'table_id' => 'example',--}}
-{{--        'table_classes' => 'display nowrap',--}}
-{{--        'table_headers' => [--}}
-{{--            'ID',--}}
-{{--            'Name',--}}
-{{--            'Has Car?',--}}
-{{--            'Email',--}}
-{{--            'Created At',--}}
-{{--            'Updated At',--}}
-{{--        ],--}}
-{{--        'filters' => [],--}}
-{{--        'table_ajax' => 'majd'--}}
-{{--    ])--}}
+
+{{--    {!! Form::open(['class' => 'js-validate-form']) !!}--}}
+{{--    {!! Form::text('majd') !!}--}}
+{{--    {!! Form::text('id_search', 'fff', ['class'=>'form-control column_search', 'placeholder' => 'Search ID']) !!}--}}
+{{--    {!! Form::close() !!}--}}
+
+{{--{!! Form::text('search[id]', 'fff', ['class'=>'form-control input-sm', '','placeholder' => 'Search ID']) !!}--}}
+{{--<form>--}}
+{{--<input type="text" value="majd">--}}
+{{--</form>--}}
+
+        {!! $datatable !!}
+
 @stop
 
 

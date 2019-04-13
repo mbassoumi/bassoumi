@@ -28,7 +28,7 @@ abstract class BassoumiDataTable
     public final function run()
     {
 
-        $headings = $this->headings();
+        $headings = $this->getHeaders();
 
         $columns = json_encode($this->columns());
 
@@ -48,6 +48,28 @@ abstract class BassoumiDataTable
             'with_popup' => $this->popup
         ])->render();
 
+    }
+
+    protected final function getHeaders()
+    {
+        $headings = $this->headings();
+        $headers = [];
+        foreach ($headings as $heading){
+            $title = $heading['title'] ?? 'No Title';
+            $stylesArr = $heading['style'] ?? [];
+            $style = '';
+            if (is_array($stylesArr)){
+                foreach ($stylesArr as $key => $value){
+                    $style .= "$key:$value; ";
+                }
+            }
+            $headers[] = [
+                'title' => $title,
+                'style' => $style,
+            ];
+
+        }
+        return $headers;
     }
 
 

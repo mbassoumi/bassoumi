@@ -6,26 +6,41 @@ $(document).ajaxStart(function () {
 });
 
 $(document).ajaxStop(function () {
-    initElements();
     $.unblockUI();
 });
 
+$(document).ready(function () {
+    initElements();
+});
 
 function initElements() {
     // $(document).on('click', '.daterange', function() {
     //     // $.blockUI();
     //     // showBlockUI();
-    //     $(this).modal('show')
+    //     alert('yahooo');
+    //     // $(this).modal('show')
     // });
-    $('input[class="daterange"]').daterangepicker({
-        // autoUpdateInput: true,
+    // $('input[class=".daterange"]').daterangepicker({
+    $(".daterange").daterangepicker({
+        autoUpdateInput: false,
         locale: {
             cancelLabel: 'Clear'
         },
         opens: 'left'
-    }, function (start, end, label) {
+    });
 
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    $(".daterange").on('apply.daterangepicker', function(ev, picker) {
+        var value = [];
+        value['from_date'] = picker.startDate.format('MM/DD/YYYY');
+        value['to_date'] = picker.endDate.format('MM/DD/YYYY');
+        // console.log(value);
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        // $(this).val(value);
+        console.log($(this).val());
+    });
+
+    $(".daterange").on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
     });
 }
 

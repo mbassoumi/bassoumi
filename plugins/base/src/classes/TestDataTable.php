@@ -17,12 +17,28 @@ class TestDataTable extends BassoumiDataTable
     {
         // TODO: Implement headings() method.
         return [
-            'ID',
-            'Name',
-            'Has Car?',
-            'Email',
-            'Created At',
-            'Updated At',
+            [
+                'title' => 'ID',
+                'style' => [
+                    'min-width' => '50px',
+                ],
+
+            ],
+            [
+                'title' => 'Name',
+            ],
+            [
+                'title' => 'Has Car?',
+            ],
+            [
+                'title' => 'Email',
+            ],
+            [
+                'title' => 'Created At',
+            ],
+            [
+                'title' => 'Updated At',
+            ],
         ];
     }
 
@@ -61,7 +77,47 @@ class TestDataTable extends BassoumiDataTable
     public function filters()
     {
         return [
-            1
+            [
+                'placeholder' => 'Search ID',
+                'name' => 'id',
+                'type' => 'number',
+                'value' => null,
+            ],
+            [
+                'placeholder' => 'Search Name',
+                'name' => 'name',
+                'type' => 'text',
+                'value' => null,
+            ],
+            [
+                'placeholder' => 'Search Car',
+                'name' => 'car',
+                'type' => 'select',
+                'selected' => null,
+                'options' => [
+                    'yes',
+                    'no'
+                ]
+            ],
+            [
+                'placeholder' => 'Search Email',
+                'name' => 'email',
+                'type' => 'email',
+                'value' => null,
+            ],
+            [
+                'placeholder' => 'Search Created At',
+                'name' => 'created_at',
+                'type' => 'daterange',
+                'value' => null,
+            ],
+            [
+                'placeholder' => 'Search Updated At',
+                'name' => 'updated_at',
+                'type' => 'daterange',
+                'value' => null,
+            ],
+
         ];
     }
 }
