@@ -26,8 +26,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/datatable', 'HomeController@datatable')->name('datatable');
 
 
-Route::get('majd', function (\Illuminate\Http\Request $request) {
-
+Route::get('majd', function (\Illuminate\Http\Request $request, \Plugins\Base\src\classes\TestDataTable $dataTable) {
+//    return $dataTable->filters()[0]['function']();
+    return $dataTable->data($request);
     $attributes = $request->all();
     $page = 1;
     $length = $request->get('length', 10);

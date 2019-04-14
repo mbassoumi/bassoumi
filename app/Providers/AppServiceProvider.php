@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,14 +21,14 @@ class AppServiceProvider extends ServiceProvider
         /*
  * register UserManagementServiceProvider
  */
-$this->app->register(\Plugins\UserManagement\Providers\UserManagementServiceProvider::class);
+        $this->app->register(\Plugins\UserManagement\Providers\UserManagementServiceProvider::class);
 
-          /*
- * register BaseServiceProvider
- */
-$this->app->register(\Plugins\Base\Providers\BaseServiceProvider::class);
+        /*
+* register BaseServiceProvider
+*/
+        $this->app->register(\Plugins\Base\Providers\BaseServiceProvider::class);
 
-          /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
+        /**$$::DONT REMOVE THIS COMMENT FOR GENERATION COMMAND::$$*/
 
     }
 
@@ -38,6 +39,7 @@ $this->app->register(\Plugins\Base\Providers\BaseServiceProvider::class);
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         //
     }
 }
