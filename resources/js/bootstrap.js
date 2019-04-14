@@ -4,6 +4,7 @@ window.blockUI = require('block-ui');
 window.jquery = require('jquery-modal');
 
 
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -16,6 +17,26 @@ try {
 
     require('bootstrap');
 } catch (e) {}
+
+require( 'jszip' );
+require('jquery-modal');
+// require( 'pdfmake' );
+require( 'datatables.net-bs4' );
+require( 'datatables.net-autofill-bs4' );
+require( 'datatables.net-buttons-bs4' );
+require( 'datatables.net-buttons/js/buttons.colVis.js' );
+require( 'datatables.net-buttons/js/buttons.flash.js' );
+require( 'datatables.net-buttons/js/buttons.html5.js' );
+require( 'datatables.net-buttons/js/buttons.print.js' );
+require( 'datatables.net-colreorder-bs4' );
+require( 'datatables.net-fixedcolumns-bs4' );
+require( 'datatables.net-fixedheader-bs4' );
+require( 'datatables.net-keytable-bs4' );
+require( 'datatables.net-responsive-bs4' );
+require( 'datatables.net-rowgroup-bs4' );
+require( 'datatables.net-rowreorder-bs4' );
+require( 'datatables.net-scroller-bs4' );
+require( 'datatables.net-select-bs4' );
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

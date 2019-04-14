@@ -33,6 +33,10 @@ let uiDependencies = [
 //     ]
 // });
 
+// var $  = require( 'jquery' );
+// var dt = require( 'datatables.net' );
+
+
 
 uiDependencies.forEach(folder => {
     // require(${folder});

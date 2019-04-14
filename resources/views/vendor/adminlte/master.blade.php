@@ -27,13 +27,13 @@
 <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
-    <script>
-        // var  = require('jquery-modal')
-    </script>
+
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables with bootstrap 3 style -->
         {{--<link rel="stylesheet" href="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css">--}}
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+{{--        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">--}}
         @endif
 
     @yield('adminlte_css')
@@ -79,8 +79,14 @@
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables with bootstrap 3 renderer -->
     {{--<script src="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>--}}
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+{{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>--}}
+{{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>--}}
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
 @endif
 
 @if(config('adminlte.plugins.chartjs'))
@@ -89,6 +95,28 @@
 @endif
 
 <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+
+{{--<script>--}}
+{{--    // var  = require('jquery-modal')--}}
+{{--    require( 'jszip' );--}}
+{{--    require( 'pdfmake' );--}}
+{{--    require( 'datatables.net-bs4' )();--}}
+{{--    require( 'datatables.net-autofill-bs4' )();--}}
+{{--    require( 'datatables.net-buttons-bs4' )();--}}
+{{--    require( 'datatables.net-buttons/js/buttons.colVis.js' )();--}}
+{{--    require( 'datatables.net-buttons/js/buttons.flash.js' )();--}}
+{{--    require( 'datatables.net-buttons/js/buttons.html5.js' )();--}}
+{{--    require( 'datatables.net-buttons/js/buttons.print.js' )();--}}
+{{--    require( 'datatables.net-colreorder-bs4' )();--}}
+{{--    require( 'datatables.net-fixedcolumns-bs4' )();--}}
+{{--    require( 'datatables.net-fixedheader-bs4' )();--}}
+{{--    require( 'datatables.net-keytable-bs4' )();--}}
+{{--    require( 'datatables.net-responsive-bs4' )();--}}
+{{--    require( 'datatables.net-rowgroup-bs4' )();--}}
+{{--    require( 'datatables.net-rowreorder-bs4' )();--}}
+{{--    require( 'datatables.net-scroller-bs4' )();--}}
+{{--    require( 'datatables.net-select-bs4' )();--}}
+{{--</script>--}}
 
 @yield('body')
 

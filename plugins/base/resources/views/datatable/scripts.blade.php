@@ -10,9 +10,11 @@
             scrollX: true,
             scrollY: "500px",
             scrollCollapse: true,
-            // dom: 'Bfrtip',
+            dom: 'Bfrtip',
+            // dom: 'T<"clear">lfrtip',
             buttons: [
                 'excel',
+
             ],
             ajax: {
                 url: '{!! $table_ajax !!}',
