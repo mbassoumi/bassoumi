@@ -4,7 +4,9 @@
 namespace Plugins\Base\src\classes;
 
 
+use App\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class TestDataTable extends BassoumiDataTable
 {
@@ -23,7 +25,7 @@ class TestDataTable extends BassoumiDataTable
             [
                 'title' => 'ID',
                 'style' => [
-                    'min-width' => '50px',
+                    'min-width' => '`100px',
                 ],
 
             ],
@@ -55,24 +57,29 @@ class TestDataTable extends BassoumiDataTable
             ],
             [
                 'data' => 'name',
+                'name' => 'name'
             ],
             [
                 'data' => 'has_car',
+                'name' => 'has_car'
             ],
             [
                 'data' => 'email',
+                'name' => 'email'
             ],
             [
                 'data' => [
                     '_' => "created_at.display",
                     'sort' => "created_at.timestamp"
-                ]
+                ],
+                'name' => 'created_at'
             ],
             [
                 'data' => [
                     '_' => "updated_at.display",
                     'sort' => "updated_at.timestamp"
-                ]
+                ],
+                'name' => 'updated_at'
             ]
         ];
     }
@@ -85,17 +92,16 @@ class TestDataTable extends BassoumiDataTable
                 'name' => 'id',
                 'type' => 'number',
                 'value' => null,
-                'function' => function ($query, $name, $value) {
-                    return $query->where($name, $value);
-                }
+                'operator' => '=',
             ],
             [
                 'placeholder' => 'Search Name',
                 'name' => 'name',
                 'type' => 'text',
                 'value' => null,
-                'function' => function ($query, $name, $value) {
-                    return $query->where($name, $value);
+                'operator' => 'like',
+                'function' => function (Builder $query, $name, $value) {
+                    return $query->where($name,'like', '%'.$value.'%');
                 }
             ],
             [
@@ -103,11 +109,12 @@ class TestDataTable extends BassoumiDataTable
                 'name' => 'car',
                 'type' => 'select',
                 'selected' => null,
+                'operator' => '=',
                 'options' => [
                     'yes',
                     'no'
                 ],
-                'function' => function ($query, $name, $value) {
+                'function' => function (Builder $query, $name, $value) {
                     return $query;//->whereRaw($name, $value);
                 }
             ],
@@ -116,44 +123,30 @@ class TestDataTable extends BassoumiDataTable
                 'name' => 'email',
                 'type' => 'email',
                 'value' => null,
-                'function' => function ($query, $name, $value) {
-                    return $query->where($name, $value);
-                }
+                'operator' => 'like',
             ],
             [
                 'placeholder' => 'Search Created At',
                 'name' => 'created_at',
                 'type' => 'daterange',
                 'value' => null,
-                'function' => function ($query, $name, $value) {
-                    $dates = explode('-', $value);
-                    foreach ($dates as $index => $date){
-                        $dates[$index] = Carbon::parse($date);
-                    }
-                    return $query->whereBetween($name, $dates);
-                }
+                'operator' => 'between',
             ],
             [
                 'placeholder' => 'Search Updated At',
                 'name' => 'updated_at',
                 'type' => 'daterange',
+                'operator' => 'between',
                 'value' => null,
-                'function' => function ($query, $name, $value) {
-                    logger('value');
-                    logger($value);
-                    $dates = explode('-', $value);
-                    foreach ($dates as $index => $date){
-                        $dates[$index] = Carbon::parse($date);
-                    }
-                    return $query->whereBetween($name, $dates);
-                }
             ],
 
         ];
     }
 
-    public function query(): array
+    public function query(): Builder
     {
         // TODO: Implement query() method.
+
+        return User::query();
     }
 }

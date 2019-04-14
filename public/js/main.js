@@ -21,6 +21,11 @@ function initElements() {
     //     // $(this).modal('show')
     // });
     // $('input[class=".daterange"]').daterangepicker({
+    handleDateRange();
+}
+
+function handleDateRange() {
+    console.log('ahaaa');
     $(".daterange").daterangepicker({
         autoUpdateInput: false,
         locale: {
@@ -29,19 +34,28 @@ function initElements() {
         opens: 'left'
     });
 
-    $(".daterange").on('apply.daterangepicker', function(ev, picker) {
+    $(".daterange").on('apply.daterangepicker', function (ev, picker) {
         var value = [];
-        value['from_date'] = picker.startDate.format('MM/DD/YYYY');
-        value['to_date'] = picker.endDate.format('MM/DD/YYYY');
+        value['from_date'] = picker.startDate.format('YYYY-MM-DD');
+        value['to_date'] = picker.endDate.format('YYYY-MM-DD');
         // console.log(value);
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
         // $(this).val(value);
         console.log($(this).val());
+        console.log(getDateRangeValueAsArray($(this).val()));
     });
 
-    $(".daterange").on('cancel.daterangepicker', function(ev, picker) {
+    $(".daterange").on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
     });
+}
+
+function getDateRangeValueAsArray(value) {
+    var arrVal = value.split(' - ');
+    return {
+        'from': arrVal[0],
+        'to': arrVal[1],
+    }
 }
 
 

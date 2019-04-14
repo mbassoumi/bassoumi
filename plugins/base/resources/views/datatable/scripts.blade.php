@@ -5,18 +5,29 @@
             serverSide: true,
             processing: true,
             orderCellsTop: true,
+            searching: false,
             // deferRender: true,
             scrollX: true,
             scrollY: "500px",
             scrollCollapse: true,
+            // dom: 'Bfrtip',
+            buttons: [
+                'excel',
+            ],
             ajax: {
                 url: '{!! $table_ajax !!}',
                 dataSrc: 'data',
                 data: function (data) {
+
                     $('#{!! $table_id !!} .table-search-bar input, #{!! $table_id !!} .table-search-bar select').each(
                         function (index) {
                             var key = $(this).attr('name');
-                            data[key] = data.columns[index].search.value;
+                            var classes = $(this).attr('class');
+                            var value = $("input[name='" + key + "']").val();
+                            if (classes.indexOf('daterange') >= 0){
+                                value = getDateRangeValueAsArray(value);
+                            }
+                            data[key] = value;
                         }
                     );
 
@@ -33,12 +44,15 @@
         });
 
 
-        $('.table-search-bar :input, .table-search-bar :selected').on('change', function (e) {
+
+        $('.table-search-bar .daterange').on('apply.daterangepicker cancel.daterangepicker', function (e) {
             e.preventDefault();
+            console.log('majd2');
+            console.log($(this).val());
             table.draw();
         });
 
-        $('.table-search-bar .daterange').on('apply.daterangepicker cancel.daterangepicker', function (e) {
+        $('.table-search-bar :input, .table-search-bar :selected').on('change', function (e) {
             e.preventDefault();
             table.draw();
         });
