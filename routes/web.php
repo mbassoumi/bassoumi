@@ -102,3 +102,5 @@ Route::get('test', function (){
 
     dd(json_encode($a));
 });
+
+Route::get('test-chess', 'HomeController@chess');
