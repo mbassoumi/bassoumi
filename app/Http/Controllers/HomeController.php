@@ -47,11 +47,11 @@ class HomeController extends Controller
     {
 
 //        $this->test2();
-//        $set = ['K', 'K', 'R'];
-//        $set = ['N', 'N','N','N', 'R', 'R'];
+        $set = ['K', 'K', 'R'];
+        $set = ['N', 'N','N','N', 'R', 'R'];
         $set = ['K', 'K','Q','Q', 'B', 'B', 'N'];
-        $height = 7;
-        $width = 7;
+        $height = 6;
+        $width = 6;
         $length = $height * $width;
 
         $mappingArray = $this->getMappingArray($height, $width);

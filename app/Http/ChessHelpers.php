@@ -35,11 +35,6 @@ trait ChessHelpers
     }
 
 
-
-
-
-
-
     public function getSafeSubsets($length, $set, $height, $width, $mappingArray, $subset = [], $results = [], $firstElement = true)
     {
         $piece = array_shift($set);
@@ -49,20 +44,22 @@ trait ChessHelpers
                 $subset = $this->resetSubset($length);
             }
             $previousSubset = $subset;
-            if ($this->isSafePiece($subset, $i, $piece, $height, $width, $mappingArray)) {
+            list($check, $subset) = $this->isSafePiece($subset, $i, $piece, $height, $width, $mappingArray);
+            if ($check) {
+//                $subset = $this->removeInvalidPositions($subset, $i, $piece);
                 $subset[$i] = $piece;
                 if (count($set) > 0) {
                     $results = $this->getSafeSubsets($length, $set, $height, $width, $mappingArray, $subset, $results, false);
                 } else {
                     $isExist = false;
-                    foreach ($results as $result){
-                        if ($subset === $result){
+                    foreach ($results as $result) {
+                        if ($subset === $result) {
                             $isExist = true;
                             break;
                         }
                     }
                     self::$counter++;
-                    if (!$isExist){
+                    if (!$isExist) {
                         $results[] = $subset;
                     }
                 }
@@ -71,6 +68,13 @@ trait ChessHelpers
         }
         array_push($set, $piece);
         return $results;
+    }
+
+    public function removeInvalidPositions($subset, $i, $piece)
+    {
+        $newSubset = [];
+
+        return $newSubset;
     }
 
     public function resetSubset($length)
