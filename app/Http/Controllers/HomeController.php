@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\ChessHelpers;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Plugins\Base\src\classes\TestDataTable;
 
 class HomeController extends Controller
 {
+
+    use ChessHelpers;
     /**
      * Create a new controller instance.
      *
@@ -35,66 +39,83 @@ class HomeController extends Controller
         return view('datatable', ['datatable' => $datatable]);
     }
 
+
+
     public function chess()
     {
-        $set = [1, 2, 3, 4];
-        $length = count($set);
-        $loopCount = 24 / 1;
-        $arr = [];
-        $repeat = $this->getRepeat($loopCount, $length);
-        $round = 0;
-        $startElementIndex = 0;
-        for ($i = 0; $i < $loopCount; $i++) {
-            if ($round % $repeat[0] == 0 and $round != 0) {
-                $round = 0;
-                $startElementIndex++;
-            }
-            $round++;
-            $dummyArr = [];
-            $dummySubset = $set;
-            for ($j = 0; $j < $length; $j++) {
-                dump($repeat);
-                list($dummyArr[$j], $dummySubset) = $this->getElementAtIndex($round, $j, $repeat, $dummySubset, $startElementIndex);
-            }
-//            dd($dummyArr);
-            $arr[] = $dummyArr;
-        }
-        dd($arr);
+
+//        $set = ['K', 'K', 'R'];
+        $set = ['K', 'K','K','K', 'R', 'R'];
+
+//        $height = 3;
+//        $width = 3;
+        $height = 4;
+        $width = 4;
+        $length = $height * $width;//count($set);
+
+        $mappingArray = $this->getMappingArray($height, $width);
+
+        $subsets = $this->getSafeSubsets($length, $set, $height, $width, $mappingArray);
+
+        dd($subsets);
+        dd(self::$counter);
+
     }
 
-    public function getElementAtIndex($round, $index, $repeat, $subset, $startElementIndex)
-    {
-        dd($round, $index, $repeat, $subset, $startElementIndex);
-        $element = 'k';
-        if ($index == 0) {
-            $element = $subset[$startElementIndex];
-            unset($subset[$startElementIndex]);
-            return [$element, $subset];
-        } else if ($repeat[$index] == 0) {
-            $elementIndex = key($subset);
-            $element = $subset[$elementIndex];
-            unset($subset[$elementIndex]);
-            return [$element, $subset];
-//            $neededIndex = $subset[]
-//            if ($round)
-        } else {
-            $dummyRound = $round % $repeat[$index];
-            if ($dummyRound == 0 ){
-                $dummyRound = $repeat[$index];
-            }
-        }
-        return [$element, $subset];
-//        dd($round, $index, $repeat, $set, $subset, $startElementIndex);
-    }
 
-    public function getRepeat($loopCount, $length)
-    {
-        $repeat = [];
-        $repeat[] = $loopCount / $length;
-        for ($i = 1; $i < $length; $i++) {
-            $repeat[$i] = intval($repeat[$i - 1] / ($length - $i));
-        }
-        return $repeat;
-    }
+
+
+    static $counter = 0;
 
 }
+/*
+ * [1 2 1 4]
+ * 1st element: 3 rounds  =>  12/4
+ * 2nd element: 1 round   =>  (12/4)/3
+ * 3ed element: 1 round   =>  ((12/4)/3)/2
+ * 4th element: 1 round   =>  (((12/4)/3)/2)/1)
+ *
+ * nth element:   round   =>  (12/(#elements!/(#elements-n)!)
+ *
+ * 4 elements {number of array elements}
+ * round p
+ * first round:
+ * thabet first element
+ *
+ *
+ * second round:
+ * thabet second element
+ *
+ *
+ * n round:
+ * thabet n element
+ *
+ *
+ */
+
+/**
+ * [1 2 1 4]
+ * 1    2   1   4
+ * 1    1   4   2
+ * 1    4   1   2
+ * 2    1   4   1
+ * 2    4   1   1
+ * 2    1   1   4
+ * 1    4   1   2
+ * 1    1   2   4
+ * 1    2   4   1
+ * 4    1   2   1
+ * 4    2   1   1
+ * 4    1   1   2
+ */
+
+/*
+ * repeat = [
+ * 0    =>  3
+ * 1    =>  1
+ * 2    =>  1
+ * 3    =>  1
+ * ]
+ */
+
+

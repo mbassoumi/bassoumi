@@ -71,7 +71,8 @@ Route::get('a7a', function () {
 });
 
 
-Route::get('test', function (){
+Route::get('test', function () {
+
     $a = [
         [
             'data' => 'id',
