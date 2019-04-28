@@ -6,6 +6,32 @@ namespace App\Http;
 
 trait UnUserd
 {
+
+
+    public function subsetSumRecursive($numbers, $arraySize, $level = 1, $i = 0, $addThis = [])
+    {
+        // If this is the last layer, use a different method to pass the number.
+        if ($level == $arraySize) {
+            $result = [];
+            for (; $i < count($numbers); $i++) {
+                $result[] = array_merge($addThis, array($numbers[$i]));
+            }
+            return $result;
+        }
+
+        $result = [];
+        $nextLevel = $level + 1;
+        for (; $i < count($numbers); $i++) {
+            // Add the data given from upper level to current iterated number and pass
+            // the new data to a deeper level.
+            $newAdd = array_merge($addThis, array($numbers[$i]));
+            $temp = $this->subsetSumRecursive($numbers, $arraySize, $nextLevel, $i, $newAdd);
+            $result = array_merge($result, $temp);
+        }
+
+        return $result;
+    }
+
     public function getLoopCount($set)
     {
         $repeated = [
@@ -34,41 +60,96 @@ trait UnUserd
         dd($repeated, $loopCount);
     }
 
-    public function getSubset($loops, $loopIndex, $length, $set = [], $subset = [], $counter = 0, $result = [])
+//    public function getSubset($loops, $loopIndex, $length, $set = [], $subset = [], $counter = 0, $result = [])
+//    {
+////        self::$counter++;
+//
+//        $loopCount = $loops[$loopIndex];
+////        dump('test_' . $counter, $loopIndex, $loops[$loopIndex]);
+//
+//        for ($i = 0; $i < $loopCount; $i++) {
+////            $counter++;
+//            if ($loopIndex == 0) {
+//                $subset = $this->resetSubset($length);
+//            }
+//
+//            $var = array_shift($set);
+////            dump($this->isSafePiece($subset, $loopIndex, $var), $subset, $loopIndex, $var);
+//            if ($this->isSafePiece($subset, $loopIndex, $var)) {
+//
+//                $subset[$loopIndex] = $var;
+//
+////            dump("loop_$loopIndex with i = $i");
+//                if ($loopIndex < $length - 1) {
+////                    dump($subset);
+//                    $result = $this->getSubset($loops, $loopIndex + 1, $length, $set, $subset, $counter, $result);
+//                } else {
+////                dump($subset);
+//                    $result[] = $subset;
+////                $result = $subset;
+//                    return $result;
+////                $result[] = $subset;
+//                }
+//            }
+//
+//            array_push($set, $var);
+//
+////            dump($loopIndex, $set);
+//        }
+//
+//        return $result;
+//
+//    }
+
+
+    public function test2()
     {
-//        self::$counter++;
+        $set = ['K', 'K', 'R'];
+        for ($i = 3; $i < 9; $i++) {
+            $set[$i] = '-';
+        }
+
+        $height = 3;
+        $width = 3;
+        $length = $height * $width;//count($set);
+        $loopCount = $this->getLoopCount($set);
+//        dd($loopCount);
+        $arr = [];
+        $repeat = $this->getRepeat($loopCount, $length);
+//        dd('a', $repeat);
+        $loops = $this->getLoopsArr($repeat, $length);
+
+        $mappingArray = $this->getMappingArray($height, $width);
+
+//        dd($repeat, $loops);
+
+        $subsets = $this->getSubset($loops, 0, $length, $height, $width, $mappingArray, $set);
+        dd($subsets);
+    }
+
+
+    public function getSubset($loops, $loopIndex, $length, $height, $width, $mappingArray, $set = [], $subset = [], $result = [])
+    {
 
         $loopCount = $loops[$loopIndex];
-//        dump('test_' . $counter, $loopIndex, $loops[$loopIndex]);
-
         for ($i = 0; $i < $loopCount; $i++) {
-//            $counter++;
             if ($loopIndex == 0) {
                 $subset = $this->resetSubset($length);
             }
 
             $var = array_shift($set);
-//            dump($this->isSafePiece($subset, $loopIndex, $var), $subset, $loopIndex, $var);
-            if ($this->isSafePiece($subset, $loopIndex, $var)) {
+            if ($this->isSafePiece($subset, $i, $var, $height, $width, $mappingArray)) {
 
                 $subset[$loopIndex] = $var;
-
-//            dump("loop_$loopIndex with i = $i");
                 if ($loopIndex < $length - 1) {
-//                    dump($subset);
-                    $result = $this->getSubset($loops, $loopIndex + 1, $length, $set, $subset, $counter, $result);
+                    $result = $this->getSubset($loops, $loopIndex, $length, $height, $width, $mappingArray, $set, $subset, $result);
                 } else {
-//                dump($subset);
                     $result[] = $subset;
-//                $result = $subset;
                     return $result;
-//                $result[] = $subset;
                 }
             }
 
             array_push($set, $var);
-
-//            dump($loopIndex, $set);
         }
 
         return $result;
@@ -273,7 +354,6 @@ trait UnUserd
         }
         return $set;
     }
-
 
 
 }

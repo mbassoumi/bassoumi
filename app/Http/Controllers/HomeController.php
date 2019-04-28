@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\ChessHelpers;
+use App\Http\ChessValidation;
+use App\Http\UnUserd;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Plugins\Base\src\classes\TestDataTable;
@@ -10,7 +12,8 @@ use Plugins\Base\src\classes\TestDataTable;
 class HomeController extends Controller
 {
 
-    use ChessHelpers;
+    use ChessHelpers, UnUserd, ChessValidation;
+
     /**
      * Create a new controller instance.
      *
@@ -40,18 +43,16 @@ class HomeController extends Controller
     }
 
 
-
     public function chess()
     {
 
+//        $this->test2();
 //        $set = ['K', 'K', 'R'];
-        $set = ['K', 'K','K','K', 'R', 'R'];
-
-//        $height = 3;
-//        $width = 3;
-        $height = 4;
-        $width = 4;
-        $length = $height * $width;//count($set);
+//        $set = ['N', 'N','N','N', 'R', 'R'];
+        $set = ['K', 'K','Q','Q', 'B', 'B', 'N'];
+        $height = 7;
+        $width = 7;
+        $length = $height * $width;
 
         $mappingArray = $this->getMappingArray($height, $width);
 
