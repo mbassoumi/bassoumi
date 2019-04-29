@@ -48,27 +48,34 @@ class HomeController extends Controller
 
 //        $this->test2();
         $set = ['K', 'K', 'R'];
-//        $set = ['N', 'N', 'N', 'N', 'R', 'R'];
-//        $set = ['K', 'K','Q','Q', 'B', 'B', 'N'];
+        $set = ['N', 'N', 'N', 'N', 'R', 'R'];
+        $set = ['K', 'K', 'Q', 'Q', 'B', 'B', 'N'];
 //        $set = [];
 //        for ($i = 0; $i < 8; $i++) {
 //            $set[$i] = 'Q';
 //        }
 //        $height = 8;
 //        $width = 8;
-        $height = 3;
-        $width = 3;
+//        $height = 3;
+//        $width = 3;
+        $height = 7;
+        $width = 7;
         $length = $height * $width;
 
         $mappingArray = $this->getMappingArray($height, $width);
         list($setElements, $setElementsCount) = $this->getSetElementsWithItsCount($set);
 //        dd($setElements, $setElementsCount);
+        $timeBefore = Carbon::now();
         $subsets = $this->getSafeSubsets($length, $setElements, $setElementsCount, $height, $width, $mappingArray);
-
-        $this->printSolution($subsets, $height, $width);
+        $timeAfter = Carbon::now();
+//        $this->printSolution($subsets, $height, $width);
 //        dd($subsets);
-        dd(self::$counter);
+        $timeDiff = date_diff($timeBefore, $timeAfter);
+//        dd($timeDiff);
+        dd($timeDiff, $timeDiff->s, $timeDiff->i, $timeDiff->f, self::$counter);
 
+
+        //when 6x6 => 2m and 26s and 0.44096ms
     }
 
     public function printSolution($solutions, $height, $width)
@@ -76,10 +83,10 @@ class HomeController extends Controller
         foreach ($solutions as $solution) {
             $temp = '';
             foreach ($solution as $key => $value) {
-                if ($key%$width ==0){
+                if ($key % $width == 0) {
                     $temp .= "\n";
                 }
-                if ($value == null){
+                if ($value == null) {
                     $value = '-';
                 }
                 $temp .= "$value";
