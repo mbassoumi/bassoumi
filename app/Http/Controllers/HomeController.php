@@ -48,20 +48,45 @@ class HomeController extends Controller
 
 //        $this->test2();
         $set = ['K', 'K', 'R'];
-        $set = ['N', 'N','N','N', 'R', 'R'];
-        $set = ['K', 'K','Q','Q', 'B', 'B', 'N'];
-        $height = 7;
-        $width = 7;
+//        $set = ['N', 'N', 'N', 'N', 'R', 'R'];
+//        $set = ['K', 'K','Q','Q', 'B', 'B', 'N'];
+//        $set = [];
+//        for ($i = 0; $i < 8; $i++) {
+//            $set[$i] = 'Q';
+//        }
+//        $height = 8;
+//        $width = 8;
+        $height = 3;
+        $width = 3;
         $length = $height * $width;
 
         $mappingArray = $this->getMappingArray($height, $width);
         list($setElements, $setElementsCount) = $this->getSetElementsWithItsCount($set);
 //        dd($setElements, $setElementsCount);
-        $subsets = $this->getSafeSubsets($length, $setElements,$setElementsCount, $height, $width, $mappingArray);
+        $subsets = $this->getSafeSubsets($length, $setElements, $setElementsCount, $height, $width, $mappingArray);
 
+        $this->printSolution($subsets, $height, $width);
 //        dd($subsets);
         dd(self::$counter);
 
+    }
+
+    public function printSolution($solutions, $height, $width)
+    {
+        foreach ($solutions as $solution) {
+            $temp = '';
+            foreach ($solution as $key => $value) {
+                if ($key%$width ==0){
+                    $temp .= "\n";
+                }
+                if ($value == null){
+                    $value = '-';
+                }
+                $temp .= "$value";
+
+            }
+            dump($temp);
+        }
     }
 
     public function getSetElementsWithItsCount($set)
