@@ -50,20 +50,33 @@ class HomeController extends Controller
         $set = ['K', 'K', 'R'];
         $set = ['N', 'N','N','N', 'R', 'R'];
         $set = ['K', 'K','Q','Q', 'B', 'B', 'N'];
-        $height = 6;
-        $width = 6;
+        $height = 7;
+        $width = 7;
         $length = $height * $width;
 
         $mappingArray = $this->getMappingArray($height, $width);
+        list($setElements, $setElementsCount) = $this->getSetElementsWithItsCount($set);
+//        dd($setElements, $setElementsCount);
+        $subsets = $this->getSafeSubsets($length, $setElements,$setElementsCount, $height, $width, $mappingArray);
 
-        $subsets = $this->getSafeSubsets($length, $set, $height, $width, $mappingArray);
-
-        dd($subsets);
+//        dd($subsets);
         dd(self::$counter);
 
     }
 
-
+    public function getSetElementsWithItsCount($set)
+    {
+        $setElementsCount = [];
+        foreach ($set as $value) {
+            if (isset($setElementsCount[$value])) {
+                $setElementsCount[$value]++;
+            } else {
+                $setElementsCount[$value] = 1;
+            }
+        }
+        $setElements = array_keys($setElementsCount);
+        return [$setElements, $setElementsCount];
+    }
 
 
     static $counter = 0;

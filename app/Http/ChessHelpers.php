@@ -35,11 +35,14 @@ trait ChessHelpers
     }
 
 
-    public function getSafeSubsets($length, $set, $height, $width, $mappingArray, $subset = [], $results = [], $firstElement = true)
+    public function getSafeSubsets($length, $set, $setElementsCount, $height, $width, $mappingArray, $startIndex = 0, $subset = [], $results = [], $firstElement = true)
     {
+        $previousSet = $set;
         $piece = array_shift($set);
+        $setElementsCount[$piece]--;
+//        dd($previousSet, $set, $setElementsCount);
 
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = $startIndex; $i < $length; $i++) {
             if ($firstElement) {
                 $subset = $this->resetSubset($length);
             }
@@ -48,20 +51,18 @@ trait ChessHelpers
             if ($check) {
 //                $subset = $this->removeInvalidPositions($subset, $i, $piece);
                 $subset[$i] = $piece;
-                if (count($set) > 0) {
-                    $results = $this->getSafeSubsets($length, $set, $height, $width, $mappingArray, $subset, $results, false);
+                if ($setElementsCount[$piece] == 0) {
+                    $recursionSet = $set;
+                    $startIndex = 0;
                 } else {
-                    $isExist = false;
-                    foreach ($results as $result) {
-                        if ($subset === $result) {
-                            $isExist = true;
-                            break;
-                        }
-                    }
+                    $recursionSet = $previousSet;
+                    $startIndex = $i;
+                }
+                if (count($recursionSet) > 0) {
+                    $results = $this->getSafeSubsets($length, $recursionSet, $setElementsCount, $height, $width, $mappingArray, $startIndex, $subset, $results, false);
+                } else {
                     self::$counter++;
-                    if (!$isExist) {
-                        $results[] = $subset;
-                    }
+                    $results[] = $subset;
                 }
             }
             $subset = $previousSubset;
