@@ -48,7 +48,8 @@ class HomeController extends Controller
 
 //        $this->test2();
         $set = ['K', 'K', 'R'];
-        $set = ['N', 'N', 'N', 'N', 'R', 'R'];
+//        $set = ['K', 'K', 'K', 'K'];
+//        $set = ['N', 'N', 'N', 'N', 'R', 'R'];
         $set = ['K', 'K', 'Q', 'Q', 'B', 'B', 'N'];
 //        $set = [];
 //        for ($i = 0; $i < 8; $i++) {
@@ -56,10 +57,10 @@ class HomeController extends Controller
 //        }
 //        $height = 8;
 //        $width = 8;
-//        $height = 3;
-//        $width = 3;
-        $height = 7;
-        $width = 7;
+        $height = 3;
+        $width = 3;
+        $height = 5;
+        $width = 5;
         $length = $height * $width;
 
         $mappingArray = $this->getMappingArray($height, $width);
@@ -70,6 +71,7 @@ class HomeController extends Controller
         $timeAfter = Carbon::now();
 //        $this->printSolution($subsets, $height, $width);
 //        dd($subsets);
+//        dd(self::$counter);
         $timeDiff = date_diff($timeBefore, $timeAfter);
 //        dd($timeDiff);
         dd($timeDiff, $timeDiff->s, $timeDiff->i, $timeDiff->f, self::$counter);

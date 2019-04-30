@@ -15,7 +15,7 @@ trait ChessValidation
          *      reverse
          * ]
          */
-        if ($subset[$index] == '-') {
+        if (isset($subset[$index]) and  $subset[$index] == '-') {
             $check = false;
             switch ($piece) {
                 case 'K':
